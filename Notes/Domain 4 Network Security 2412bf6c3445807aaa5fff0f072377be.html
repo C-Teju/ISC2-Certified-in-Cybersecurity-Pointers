@@ -1,0 +1,738 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Domain 4: Network Security</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2412bf6c-3445-807a-aa5f-ff0f072377be" class="page sans"><header><h1 class="page-title" dir="auto"><a href="https://isc2.obrizum.io/org/cc/catalogue/331685d8-9dda-48cf-bf95-6234f5fa6f54">Domain 4: Network Security</a></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h2 id="2412bf6c-3445-802d-bd26-ca433f0c8843" class=""><strong>Networking</strong></h2></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8054-acc2-c6051b2a1bb5" class=""><strong>What is Networking?</strong></p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8076-88db-cd5a568cef7d" class="">Networking refers to the practice of connecting two or more computers or devices to share data, information, or resources such as files, printers, or internet access. A network allows these connected devices to communicate and collaborate efficiently.</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-80b5-b29b-f4d2330b6569" class="">To establish secure data communications, it&#x27;s important to understand the technologies involved, including hardware, software, protocols, and encryption.</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8043-8d38-d599ca080b33" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8091-b84e-ef729485cff4" class="">There are two basic types of networks:</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8069-ad31-eade9c2c1d95" class=""><strong>Local Area Network (LAN):</strong> A LAN typically spans a single floor or building and covers a limited geographical area.</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-80ed-b714-fedf8e5c61bc" class=""><strong>Wide Area Network (WAN):</strong> A WAN refers to long-distance connections between geographically remote networks.</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8021-b8dc-d3bbb8bdf842" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-80ad-aa29-d45c0008ca5e" class=""><strong>Network Devices</strong></p></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-80b9-a1c0-ce9e087fc556" class="bulleted-list"><li style="list-style-type:disc"><strong>Hubs:</strong> Hubs connect multiple devices in a network, mainly in home setups. They are wired and less advanced than switches or routers.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-8092-8df8-f9d2a6adc36d" class="bulleted-list"><li style="list-style-type:disc"><strong>Switch:</strong> A switch is a wired, intelligent hub that sends data only to the intended device, improving efficiency and throughput. It&#x27;s smarter than a hub but not as smart as a router. Switches are wired devices that know the addresses of the devices connected to them and route traffic to that port/device rather than retransmitting to all devices. Switches can also create separate broadcast domains using VLANs.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-8076-bf65-c1bc888472d0" class="bulleted-list"><li style="list-style-type:disc"><strong>Router:</strong> Routers manage traffic flow between networks, connecting multiple switches. They can be wired or wireless and choose the most efficient path/route for data, making them smarter than hubs and switches.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-80e7-827b-cea146b142af" class="bulleted-list"><li style="list-style-type:disc"><strong>Firewall:</strong> A firewall filters and controls network traffic to protect the network. It’s usually placed between a private network and the internet or between departments within an organization, using defined rules or access control lists.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-8046-b787-cbf0f6b9100b" class="bulleted-list"><li style="list-style-type:disc"><strong>Server:</strong> A server is a computer that provides information to other computers on a network. Examples include web, email, print, database, and file servers. They are accessed by client computers and are secured differently than workstations to protect their data.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-80db-874e-edbfec39901d" class="bulleted-list"><li style="list-style-type:disc"><strong>Endpoint:</strong> Endpoints are the ends of a network communication link, typically a client device requesting resources from a server. They can include servers, desktops, laptops, tablets, phones, or any end-user device.</li></ul></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-806c-8b94-ce7197e33e2c" class=""><strong>Other Networking Terms</strong></p></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-80bf-92bc-d18a5cceaed2" class="bulleted-list"><li style="list-style-type:disc"><strong>Ethernet:</strong> Ethernet (IEEE 802.3) is a standard that defines wired connections between networked devices. This standard defines how data is formatted over the wire to ensure different devices can communicate over the same cables.</li></ul></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-80c4-b75a-e26b4c03694b" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-800e-9493-edc184ecf753" class=""><strong>Device Address</strong></p></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-8089-87c6-faf2ab5373df" class="bulleted-list"><li style="list-style-type:disc"><strong>Media Access Control (MAC) Address: </strong>Every network device has a MAC address, e.g., 00-13-02-1F-58-F5. The first 3 bytes identify the manufacturer. No two devices in the same local network can have the same MAC address, or an address conflict will occur.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-805a-bd25-f95aef2edec0" class="bulleted-list"><li style="list-style-type:disc"><strong>Internet Protocol (IP) Address: </strong>MAC addresses are built into hardware, while IP addresses are logical and help identify the device on a network. IP addresses allow continued communication even if the physical hardware changes. Examples include 192.168.1.1 and 2001:db8::ffff:0:1</li></ul></div><div style="display:contents" dir="auto"><blockquote id="2412bf6c-3445-802d-94b9-f696ae294467" class=""><strong>What is a common network device used to connect networks?<br/>Router</strong></blockquote></div><div style="display:contents" dir="auto"><blockquote id="2412bf6c-3445-809f-9f2a-d15d4b315221" class=""><strong>What is a common network device used to filter traffic?<br/>Firewall</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-807d-8489-eb1392b58670" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2412bf6c-3445-8087-889f-f5f7dbc609e8" class=""><strong>Networking at a Glance<br/></strong></h2></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8025-b1f5-de3f641a5219" class=""><strong>A Small Business Network:</strong></p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-809c-895e-e39c587c0d63" class="">This diagram represents a small business network, with lines showing wired connections. All devices behind the firewall connect through the network switch, and the firewall is positioned between the network switch and the internet.</p></div><div style="display:contents" dir="ltr"><figure id="2412bf6c-3445-80b8-9f67-f31e101c3723" class="image" style="text-align:center"><a href="Domain%204%20Network%20Security/image.png"><img style="width:288px" src="Domain%204%20Network%20Security/image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-80b8-8589-fae4f0afe019" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8019-80ec-e788b96baad1" class=""><strong>A Typical Home Network:</strong></p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-808f-80f6-c8277406b823" class="">This diagram represents a typical home network. The main difference from a business network is that the router, firewall, and network switch are often combined into a single device—usually provided by the internet provider—shown here as the wireless access point.</p></div><div style="display:contents" dir="ltr"><figure id="2412bf6c-3445-808e-a06b-e42c5982ce35" class="image"><a href="Domain%204%20Network%20Security/image%201.png"><img style="width:288px" src="Domain%204%20Network%20Security/image%201.png"/></a></figure></div><div style="display:contents" dir="auto"><blockquote id="2412bf6c-3445-80fc-aa5a-c8f22232cfd8" class=""><strong>What connects all devices behind the firewall in a small business network?<br/>Switch</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8034-8cd1-dc691a0014ab" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2412bf6c-3445-805f-893a-e420464ca7c8" class=""><strong>Wi-Fi</strong></h2></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8036-84a4-e6766a2cfb0c" class="">Wireless networking is widely used in homes and businesses due to its ease of setup and low cost. It allows workstations and portable devices to connect without cables, offering greater mobility within the signal range of wireless access points. However, this convenience also introduces more vulnerabilities.</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-80cd-9c41-ee6e5242800a" class="">Wi-Fi coverage typically suffices for most homes or small offices, and range extenders can be used for larger areas. The Wi-Fi standard has improved over time, with each version offering faster speeds.</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8070-ad76-d1e069fe497e" class="">Unlike wired networks—where attackers need physical access to cables or devices—wireless </p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8006-b3fd-f2ee170c4b3c" class="">networks can be targeted remotely, making them more susceptible to distant intrusions.</p></div><div style="display:contents" dir="auto"><blockquote id="2412bf6c-3445-801f-a7f5-c4cdbff0c778" class=""><strong>What is a potential drawback associated with the freedom provided by wireless networking?<br/>Additional vulnerabilities</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-8034-b624-d3760bcaf89a" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2412bf6c-3445-80b7-8cdb-e7edae14d908" class=""><strong>Microsegmentation</strong></h2></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-804e-8a82-e1ed17e29170" class="">Microsegmentation helps protect data centers from modern cyberattacks that can bypass traditional security. It works by dividing the network into smaller, secure segments and controlling traffic within and between them. This approach improves threat detection and makes it harder for attackers to move across systems. Avoiding infrastructure-focused designs also boosts efficiency and security.</p></div><div style="display:contents" dir="auto"><p id="2412bf6c-3445-80d0-9d70-ec68a0074ea0" class=""><strong>Microsegmentation Characteristics:</strong></p></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-8070-a2b4-f800ed9a0cba" class="bulleted-list"><li style="list-style-type:disc">Allows detailed control over traffic, down to individual users, devices, times, credentials, and services.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-8002-a7df-e0b35638325d" class="bulleted-list"><li style="list-style-type:disc">Uses logical rules (not physical ones), requiring no extra hardware or manual device access.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-8097-ab66-f5038ef6ca7b" class="bulleted-list"><li style="list-style-type:disc">Supports defense-in-depth by preventing one compromised point from affecting the entire network.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-80a5-9b78-f39d4d6950c6" class="bulleted-list"><li style="list-style-type:disc">Essential in cloud/shared environments to protect data from unauthorized access, including by cloud provider staff.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-80b1-864a-e3e7abfce572" class="bulleted-list"><li style="list-style-type:disc">Enforces least privilege by limiting communication between departments (e.g., isolating HR data).</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-80d6-8f38-c7daae3e4322" class="bulleted-list"><li style="list-style-type:disc">Enabled by virtualization and software-defined networking (SDN); uses tools like VPNs or security groups.</li></ul></div><div style="display:contents" dir="auto"><ul id="2412bf6c-3445-8088-a384-e4d5767d3b55" class="bulleted-list"><li style="list-style-type:disc">Can even be used at home to separate smart devices from personal computers.</li></ul></div><div style="display:contents" dir="auto"><blockquote id="2412bf6c-3445-807c-b0ea-ed4edaaf96ee" class=""><strong>What does micro-segmentation aid in protecting against?<br/>Advanced persistent threats</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80c2-9354-f22162258afe" class=""><strong>Microsegmentation Characteristics</strong></p></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-8054-a2cd-cc61c15189d2" class="">Microsegmentation enables highly detailed control within an IT environment by applying logical rules to individual devices or users—such as restricting access by IP, time, credentials, and services. It doesn&#x27;t require physical changes and supports centralized management. As a core part of the defense-in-depth approach, it prevents a single breach from compromising the entire network. It&#x27;s especially important in shared environments like the cloud, where customer data and third-party access coexist. Microsegmentation also enforces least privilege by isolating departments like HR to protect sensitive data. Enabled by virtualization and SDN, it&#x27;s implemented using tools like VPNs and security groups—even in homes to separate vulnerable smart devices from personal systems.</p></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-80a3-8a75-d02524a07820" class=""><strong>What does Microsegmentation enforce in terms of business functions/units/offices/departments?<br/>Least privilege</strong></blockquote></div><div style="display:contents" dir="auto"><h2 id="2432bf6c-3445-8060-b773-d3740c1f2cc3" class=""><strong>Tools to Identify and Prevent Threats</strong></h2></div><div style="display:contents" dir="ltr"><figure id="2432bf6c-3445-803a-8825-c73221e53061" class="image"><a href="Domain%204%20Network%20Security/image%202.png"><img style="width:709.96875px" src="Domain%204%20Network%20Security/image%202.png"/></a><figcaption>This table lists tools used to identify and protect against threats like viruses, malware, DoS attacks, spoofing, and side-channel attacks. Tools such as firewalls, SIEM, and anti-malware help secure both networks and individual systems. Some tools also prevent threats, not just detect them.</figcaption></figure></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-8037-b884-cd2b98ae7e86" class=""><strong>Malware (Malicious Software):</strong> A general term for any software designed to harm, exploit, or steal data from devices or networks. This includes viruses, worms, trojans, ransomware, spyware, and more.</p></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-8070-a7a0-e85d064c2d7e" class="">Here are definitions for common types of <strong>malware</strong>:</p></div><div style="display:contents" dir="auto"><ul id="2432bf6c-3445-809b-b94e-c8d6f7b27bb2" class="bulleted-list"><li style="list-style-type:disc"><strong>Virus:</strong> Malicious code that attaches to files or programs and spreads when the infected file is opened. It can damage or delete data.</li></ul></div><div style="display:contents" dir="auto"><ul id="2432bf6c-3445-80c1-a7fb-e8e1cfdca83a" class="bulleted-list"><li style="list-style-type:disc"><strong>Worm:</strong> A standalone program that spreads itself across networks without needing to attach to other files. It often consumes bandwidth or overloads systems.</li></ul></div><div style="display:contents" dir="auto"><ul id="2432bf6c-3445-8051-90f3-fc8c5c8c0b5f" class="bulleted-list"><li style="list-style-type:disc"><strong>Trojan (Trojan Horse):</strong> Malware disguised as a legitimate program. Once installed, it can give attackers access to the system or perform harmful actions.</li></ul></div><div style="display:contents" dir="auto"><ul id="2432bf6c-3445-80e6-b9a9-fe568fd792ee" class="bulleted-list"><li style="list-style-type:disc"><strong>Ransomware:</strong> Malware that locks or encrypts your data and demands payment (ransom) to restore access.</li></ul></div><div style="display:contents" dir="auto"><ul id="2432bf6c-3445-80f1-af92-c2b59c562d00" class="bulleted-list"><li style="list-style-type:disc"><strong>Spyware:</strong> Software that secretly monitors user activity, often capturing sensitive data like passwords or credit card numbers.</li></ul></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-80fd-83de-e9262f464190" class="">These all fall under the broader category of <strong>malware</strong>, designed to disrupt, damage, or gain unauthorized access to systems.</p></div><div style="display:contents" dir="auto"><h3 id="2432bf6c-3445-80d8-991c-e7293c7693de" class=""><strong>DoS Attack (Denial of Service):</strong></h3></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-8023-bae8-ccd28f757ec0" class="">A <strong>DoS attack</strong> floods a system (like a website or server) with so much traffic that it becomes <strong>slow or unavailable</strong> to real users.</p></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-8039-b485-e6d5120471f9" class="">🔹 <em>Goal:</em> Overwhelm the system so it crashes or can&#x27;t respond.</p></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-8052-a029-e2bbbeb00cbd" class="">🔹 <em>Example:</em> Too many fake login requests make the website crash for everyone.</p></div><div style="display:contents" dir="auto"><h3 id="2432bf6c-3445-8006-8b92-fe168646eb6a" class=""><strong>Spoofing:</strong></h3></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-8017-a160-ff87fe2a611f" class=""><strong>Spoofing</strong> is when an attacker pretends to be someone else—like faking an IP address, email, or website—to <strong>trick users or systems</strong>.</p></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-80d8-89b8-e0fefb2f0bc6" class="">🔹 <em>Goal:</em> Gain access or fool the victim.</p></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-80ed-8c16-db1a052d2ae9" class="">🔹 <em>Example:</em> A fake email looks like it’s from your bank and asks for your password.</p></div><div style="display:contents" dir="auto"><h3 id="2432bf6c-3445-80ec-a16b-ed48485c4e78" class=""><strong>Side-Channel Attack:</strong></h3></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-807a-90e1-fd0f22bd5d4e" class="">This attack <strong>doesn’t directly break into a system</strong>, but instead gathers information from things like power usage, timing, or electromagnetic leaks to <strong>guess secrets</strong> (like passwords or encryption keys).</p></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-8059-b227-ecddf5ccf09b" class="">🔹 <em>Goal:</em> Steal data indirectly.</p></div><div style="display:contents" dir="auto"><p id="2432bf6c-3445-801a-820a-dc95cd27a9d9" class="">🔹 <em>Example:</em> Measuring how long a system takes to respond in order to figure out a password.</p></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-80d4-8a80-f5515054c1a4" class="">🛡️ <strong>SIEM (Security Information and Event Management)</strong></h3></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8094-91f7-cc8d919df2bb" class=""><strong>SIEM</strong> is a tool used by security teams to <strong>monitor, detect, and respond to threats</strong> across a network.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8028-b62a-e80cbf8518eb" class="">Think of it like a <strong>command center</strong> that collects and analyzes security data from various systems in one place.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80da-aaab-c7a6b4504438" class="">🔹 <strong>What it does:</strong></p></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80d6-85dd-f080ef90d7a5" class="bulleted-list"><li style="list-style-type:disc">Gathers logs from firewalls, antivirus, servers, etc.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80fa-8cf6-e3c383978e03" class="bulleted-list"><li style="list-style-type:disc">Detects suspicious activity or attacks</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80fa-9be3-cfbf4276af83" class="bulleted-list"><li style="list-style-type:disc">Helps investigate and fix security issues faster</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80ab-8c5e-d2bb35631d37" class="bulleted-list"><li style="list-style-type:disc">Alerts security teams in real-time</li></ul></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80af-8558-ed822d660b57" class="">🔹 <strong>Why it matters:</strong></p></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80c1-a5c0-eb4534e04f74" class="bulleted-list"><li style="list-style-type:disc">Helps protect large organizations from cyberattacks</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-803e-9e5e-fc274e2d55ab" class="bulleted-list"><li style="list-style-type:disc">Speeds up threat detection and response</li></ul></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80a7-90a7-e2c85686bac1" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-80a4-8125-c6ee0f6fa935" class=""><strong>Intrusion Detection System (IDS)</strong></h2></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8081-b77a-ee2645133327" class="">An IDS monitors logs and real-time events to detect abnormal activity or intrusion attempts. It automates threat detection and supports other security tools like firewalls as part of a defense-in-depth strategy but does not replace them.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80c8-9678-f9c513fbe375" class="">IDSs detect both external and internal attacks, like internet-based threats or spreading worms. They respond by raising alerts for timely action. IDS helps isolate secure zones from less trusted ones and often complements firewalls.</p></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8018-ac10-d8b0edb0a6e3" class="toggle"><li><details open=""><summary>There are two main types: <strong>Host-based IDS (HIDS):</strong> Monitors a single device and <strong>Network-based IDS (NIDS):</strong> Monitors network traffic patterns.</summary><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-80f8-bfdc-ccf5042cfdab" class=""><strong>Host-based Intrusion Detection System (HIDS):</strong></h3></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80de-a5f0-ff8884d7f8b0" class="">A HIDS monitors activity on a single computer, including logs and processes, and can detect detailed host-level attacks like remote control or file compromise. It&#x27;s better at spotting local anomalies than NIDS but is costlier to manage since it requires setup on each system. It cannot detect attacks on other devices in the network.</p></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8013-8533-e07c600450d1" class=""><strong>Network Intrusion Detection System (NIDS):</strong></h3></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-801b-9431-e37dd5d59a8b" class="">A NIDS monitors network traffic for attacks or anomalies. It can’t see inside encrypted data but analyzes packet details. Using sensors at key points like routers or firewalls, it collects data for central analysis. NIDS has minimal impact on network performance but may not show if an attack was successful or what it affected.</p></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8023-9daf-d5fbfd1418fb" class=""><div class="indented"><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-807b-a5a9-c5e6849c4920" class=""><strong>Security Information and Event Management (SIEM):</strong></h2></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8058-99e3-f1b843e7faa2" class="">SIEM refers to tools that collect and analyze security data from multiple sources across an organization’s IT environment. These tools generally known as security information and event management (or SI-E-M, pronounced “SIM”) help identify potential threats, streamline security efforts, and improve overall visibility into security posture. SIEM solutions gather log data from systems, applications, and devices to detect anomalies and support faster incident response. They are often used as part of a broader <strong>defense-in-depth</strong> strategy to strengthen an organization’s information security program.</p></div></div></p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-801a-a168-cd2c5645d38b" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-80e8-a8b3-f98fd05a21f7" class=""><strong>Preventing Threats</strong></h2></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80bf-95cb-e455b3279f32" class="">While no single method can stop all threats, some basic practices help reduce risk:</p></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80f6-b871-c4c32f721f52" class="bulleted-list"><li style="list-style-type:disc"><strong>Keep systems updated:</strong> Apply patches regularly to fix bugs and security flaws. Use patch management to stay current.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-804b-967e-dc8ede5b6fa9" class="bulleted-list"><li style="list-style-type:disc"><strong>Disable unneeded services/protocols:</strong> Only run what&#x27;s necessary to reduce attack surfaces.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8097-b612-ff9edef82bd0" class="bulleted-list"><li style="list-style-type:disc"><strong>Use IDS/IPS:</strong> Intrusion Detection and Prevention Systems monitor and detect threats, and can block attacks.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8079-b2f8-dce2cd27c9cd" class="bulleted-list"><li style="list-style-type:disc"><strong>Use firewalls:</strong> Network firewalls protect entire networks, while host firewalls guard individual systems.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-806d-9360-ffdf361295c5" class="bulleted-list"><li style="list-style-type:disc"><strong>Use updated anti-malware software:</strong> Keeps systems protected from viruses and other malicious software.</li></ul></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8011-9ab8-c8209aff6eb4" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8006-be28-ff045608349a" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8076-b48f-f4dd6e843271" class=""><strong>Antivirus:</strong></p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80b9-98e2-ee59afb8f0fe" class="">Antivirus software is a key security practice and is required for PCI DSS compliance. It identifies malware using known signatures or by detecting abnormal behavior through scanners, pattern recognition, and machine learning. Modern anti-malware solutions go beyond viruses, detecting threats like rootkits, ransomware, and spyware. Many enterprise solutions also include firewalls and IDS/IPS as part of endpoint protection.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80a7-bfa9-f0479f5adc5f" class=""><strong>Scans:</strong></p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8089-b52e-e17e1061adc6" class="">Regular vulnerability and port scans help assess the effectiveness of an organization’s security controls. They can uncover missing patches, weak settings, new or exposed vulnerabilities, and non-compliance with security policies—all of which attackers may exploit.</p></div><div style="display:contents" dir="ltr"><figure id="2442bf6c-3445-8022-9ab8-eff9d13ed857" class="image" style="text-align:center"><a href="Domain%204%20Network%20Security/image%203.png"><img style="width:240px" src="Domain%204%20Network%20Security/image%203.png"/></a><figcaption>This is a sample scan from Zenmap, which displays open ports on a host. Open ports can indicate active services, some of which may be vulnerable if not properly secured.</figcaption></figure></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-80eb-9718-d9378d24604c" class=""><strong>Firewalls</strong></h2></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-802d-ae94-f05043ea4328" class="toggle"><li><details open=""><summary>In computing, <strong>firewalls</strong> are security devices or software that <strong>filter and control network traffic</strong> based on predefined rules, helping to prevent unauthorized access to or from a network.</summary><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-802c-81e0-d913f9b7099d" class="">🔥 Origin of the Term</h3></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8042-af85-e786fba813c5" class="">Just like firewalls in buildings stop fire from spreading, in IT, <strong>firewalls block digital &quot;fires&quot;</strong>—unauthorized or harmful traffic—from spreading between parts of a network.</p></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-80c0-bbf5-cb2c5befaea9" class="">🛡️ What Firewalls Do</h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8071-849e-e982651353f7" class="bulleted-list"><li style="list-style-type:disc"><strong>Enforce security policies</strong> by examining and filtering traffic.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-804b-a47f-e3b69ff126c6" class="bulleted-list"><li style="list-style-type:disc">Decide which data packets to allow or block based on rules.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80d8-8540-c2f29038c40b" class="bulleted-list"><li style="list-style-type:disc">Protect both <strong>internet-facing gateways</strong> and <strong>internal network segments</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80ba-aa71-eb7b8a406547" class="bulleted-list"><li style="list-style-type:disc">Help implement <strong>network zoning</strong>, isolating sensitive areas.</li></ul></div><div style="display:contents" dir="auto"><hr id="2442bf6c-3445-80cd-b0c4-db217edd0cbd"/></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8071-9000-ea6910694989" class="">🔧 Types of Firewalls</h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80fd-87d9-fd7c3d5ecc33" class="bulleted-list"><li style="list-style-type:disc"><strong>Traditional Firewalls:</strong> Work mainly at <strong>Layer 4</strong> (transport layer), filtering traffic based on IP addresses, ports, and protocols.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-803e-b147-fdc508e85770" class="bulleted-list"><li style="list-style-type:disc"><strong>Next-Generation Firewalls (NGFWs):</strong><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8073-a55d-f30487c89ff0" class="bulleted-list"><li style="list-style-type:circle">Include features like:<div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80f3-90ad-dc7b47e22f17" class="bulleted-list"><li style="list-style-type:square"><strong>Intrusion Prevention Systems (IPS)</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8029-88fd-e1b3f8836fb1" class="bulleted-list"><li style="list-style-type:square"><strong>Application-level filtering (Layer 7)</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8082-8f8a-cc5c9724fbdf" class="bulleted-list"><li style="list-style-type:square"><strong>Proxy services</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8033-b9ea-ce2c6eb33f40" class="bulleted-list"><li style="list-style-type:square"><strong>Integration with </strong>identity and access management <strong>IAM</strong> for user-based access control</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80e9-bb53-ff002cdf3845" class="bulleted-list"><li style="list-style-type:circle">Provide <strong>deep packet inspection</strong> and <strong>threat detection</strong> beyond simple filtering.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2442bf6c-3445-80e0-bd26-f604a8c7bdd4"/></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-804a-bbe6-fe4ce84434f6" class="">📊 Firewall Placement</h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8062-bd5d-fff4781401df" class="bulleted-list"><li style="list-style-type:disc"><strong>At the perimeter</strong> (between the internal network and the internet)</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-808c-9cf1-e22d29a4de02" class="bulleted-list"><li style="list-style-type:disc"><strong>Within internal networks</strong> to enforce <strong>segmentation</strong> and <strong>limit lateral movement</strong></li></ul></div><div style="display:contents" dir="ltr"><figure id="2442bf6c-3445-807d-8759-f37728dc1595" class="image"><a href="Domain%204%20Network%20Security/image%204.png"><img style="width:709.9791870117188px" src="Domain%204%20Network%20Security/image%204.png"/></a></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8015-a0ec-c000bad98fc9" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80e6-b87f-c3dc74ba52ca" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-80ab-9e79-cf2ed0de1fda" class="">🔐 Intrusion Prevention System (IPS) – Explained</h2></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8038-99e9-cd7be4f16a6a" class="toggle"><li><details open=""><summary>An <strong>Intrusion Prevention System (IPS)</strong> is a <strong>proactive security tool</strong> designed to detect and <strong>automatically block</strong> malicious activity in real time <strong>before it reaches the target system</strong>.</summary><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8000-981f-e6a3ff41b605" class="">✅ Key Features of IPS</h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80ea-a84a-ddb819f76c36" class="bulleted-list"><li style="list-style-type:disc"><strong>Active Defense</strong>: Unlike an IDS (Intrusion Detection System), which only alerts, an <strong>IPS takes action</strong>—it <strong>blocks</strong>, <strong>drops</strong>, or <strong>quarantines</strong> suspicious traffic.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80c8-ba29-fd1d9a383b76" class="bulleted-list"><li style="list-style-type:disc"><strong>In-Line Deployment</strong>: IPS is placed <strong>in the path of network traffic</strong>, meaning <strong>all traffic flows through it</strong>, allowing it to inspect and control what moves forward.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-80e2-a39c-e0dd6d877afd" class="">🚧 How IPS Works</h3></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-8069-8eba-d788a9bfa6d8" class="numbered-list" start="1"><li><strong>Monitors incoming traffic</strong></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-8058-a75f-c55305b7f873" class="numbered-list" start="2"><li><strong>Analyzes</strong> it using signatures, behavior, or anomalies</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-8030-8f6d-e97a4f680d05" class="numbered-list" start="3"><li><strong>Decides</strong> whether it’s safe or malicious</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-804b-95f3-fe0488a6c3e8" class="numbered-list" start="4"><li><strong>Takes action</strong>: blocks, logs, or alerts based on rules</li></ol></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-80de-9b90-cc0e16982f84" class="">🛠️ Types of IPS</h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8030-9a36-ceaf4b2275e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Network-based IPS (NIPS)</strong>: Monitors the entire network for suspicious activity.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80a0-8bde-fd496dade529" class="bulleted-list"><li style="list-style-type:disc"><strong>Host-based IPS (HIPS)</strong>: Installed on individual systems to monitor and protect that host.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2442bf6c-3445-8069-bd91-ddc4026ca5d1" class="image" style="text-align:center"><a href="Domain%204%20Network%20Security/image%205.png"><img style="width:288px" src="Domain%204%20Network%20Security/image%205.png"/></a></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80a2-bd0d-d770963b786d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80dd-a168-e2736998211c" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-80b4-b4db-d54fcbb2270c" class=""><strong>Redundancy</strong></h2></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-806e-bbb5-f94f1406d2de" class="toggle"><li><details open=""><summary>Redundancy means having <strong>duplicate systems or components</strong> to ensure continued operation during failure. In data centers, this includes <strong>multiple power supplies</strong>, <strong>diverse communication channels</strong>, and <strong>independent utility connections</strong>. Power sources are often backed by <strong>batteries and generators</strong>, with <strong>redundant generators</strong> using <strong>different fuel types</strong> for high availability and resilience.</summary><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-80ce-bde8-e6835ae0109a" class=""><strong>Example of Redundancy (Application of)</strong></h3></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-803e-8442-cf832ee47dd2" class="">Redundancy in power ensures systems stay operational during outages. It involves using <strong>backup power sources</strong> like <strong>Uninterruptible Power Supplies (UPS)</strong>, <strong>transfer switches</strong>, <strong>transformers</strong>, and <strong>generators</strong> (diesel, gas, propane, or solar-powered). Critical facilities (e.g., hospitals) may even connect to <strong>multiple power grids</strong> via different providers. This setup ensures continuous power even if one source fails, minimizing downtime and ensuring availability.</p></div></details></li></ul></div><div style="display:contents" dir="ltr"><figure id="2442bf6c-3445-806b-b709-da2f5aa6312c" class="image"><a href="Domain%204%20Network%20Security/image%206.png"><img style="width:288px" src="Domain%204%20Network%20Security/image%206.png"/></a></figure></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-80c3-8389-c63a2a699c54" class=""><strong>What is the function of transfer switches or transformers in a redundant power system?<br/>Enable seamless transition between power sources</strong></blockquote></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-8049-b408-da6db8102af9" class=""><strong>In a scenario requiring full redundancy, what should devices have in terms of power supplies?<br/>Two power supplies connected to diverse sources</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80f9-a934-d655a11a5130" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-8075-98b2-d38229c52e58" class=""><strong>Network Segmentation: Demilitarized Zone (DMZ)</strong></h2></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-803b-9af8-f51db6a6643d" class="">A <strong>DMZ (Demilitarized Zone)</strong> is a <strong>network segment</strong> that acts as a buffer between an <strong>external network (like the internet)</strong> and an <strong>internal network</strong>. Systems in the DMZ, such as <strong>web servers</strong>, are isolated using <strong>firewalls and secured switches</strong> to limit access and protect internal resources. This setup helps implement <strong>defense in depth</strong>, allowing only <strong>legitimate traffic</strong> to reach internal systems while reducing the risk of external attacks.<br/></p></div><div style="display:contents" dir="ltr"><figure id="2442bf6c-3445-8046-a247-eedf71eba15e" class="image"><a href="Domain%204%20Network%20Security/image%207.png"><img style="width:288px" src="Domain%204%20Network%20Security/image%207.png"/></a></figure></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-80f9-bbf4-c6e585eea65c" class=""><strong>What term describes a portion of the organization&#x27;s network that interfaces directly with the outside world and typically has more security controls and restrictions compared to the rest of the internal IT environment?<br/>Demilitarized zone (DMZ)</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-807a-92b0-ea73992796b0" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-80a4-a81a-efa27c0a9de8" class=""><strong>DMZ (Demilitarized Zone) Deeper Dive</strong></h2></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-80fd-9618-fc2e32e940f8" class="">🔐 <strong>DMZ (Demilitarized Zone) – Deep Dive Explained</strong></h3></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8076-bd96-ddf5b970b754" class="">A <strong>DMZ (Demilitarized Zone)</strong> is a <strong>buffer zone between an external network (like the internet)</strong> and the <strong>internal secure network</strong>. It is commonly used to host <strong>public-facing services</strong>, such as <strong>web servers, email servers, or DNS servers</strong>, while <strong>limiting access to internal systems</strong>.</p></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-80c9-93fe-fdbe9c18ae44" class="">✅ Example Architecture:</h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80a0-8e1a-ce5ebb28c037" class="bulleted-list"><li style="list-style-type:disc">A <strong>web front-end server</strong> is placed in the <strong>DMZ</strong>, accessible from the internet.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8082-af9e-d843ae2eea7c" class="bulleted-list"><li style="list-style-type:disc">This web server <strong>retrieves data</strong> from a <strong>database server</strong> that resides in the <strong>internal network</strong>, which is protected by a second firewall.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80ef-9a74-db754242eae9" class="bulleted-list"><li style="list-style-type:disc">This setup ensures that even if the web server is compromised, the attacker cannot directly access sensitive internal systems or data.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8061-aabd-f5e75e65d180" class="">✅ Real-World Example:</h3></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8081-8fa9-e01ce3892270" class="">In a <strong>hospital or healthcare setting</strong>:</p></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-805d-bb95-cd42aa90866c" class="bulleted-list"><li style="list-style-type:disc">A <strong>segregated network</strong> may handle <strong>patient information and billing</strong>, kept <strong>behind an internal firewall</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-801e-86d2-e658f408b5fc" class="bulleted-list"><li style="list-style-type:disc">A <strong>web-based EMR (Electronic Medical Records) application</strong> may be deployed in the DMZ to allow controlled external access.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80c3-bb9d-fe9cccc256e1" class="bulleted-list"><li style="list-style-type:disc">Internally, a <strong>secure database server</strong> stores sensitive health records and is only accessible through tightly controlled rules set by <strong>authorized personnel</strong> via the firewall.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-802b-a0d1-f823ed3f677e" class="bulleted-list"><li style="list-style-type:disc"><strong>Secure switches</strong> or <strong>access controls</strong> ensure only designated personnel can manage firewall rules or network segmentation.</li></ul></div><div style="display:contents" dir="auto"><hr id="2442bf6c-3445-80f0-8191-d49d50338a5c"/></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8085-baa0-de4333feb540" class="">🔍 <strong>WAF (Web Application Firewall) vs DMZ</strong></h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8041-9d2e-e3cdf6a97679" class="bulleted-list"><li style="list-style-type:disc">A <strong>WAF</strong> is not a substitute for a DMZ, but rather <strong>an additional security layer</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-805c-af5f-d69e4bf571cd" class="bulleted-list"><li style="list-style-type:disc">A <strong>Web Application Firewall (WAF)</strong> <strong>filters and monitors HTTP/HTTPS traffic</strong> to and from a web application.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8029-9eb3-dd2193ffe459" class="bulleted-list"><li style="list-style-type:disc">It <strong>protects against common web threats</strong> such as SQL injection, cross-site scripting (XSS), and more—even if the traffic is encrypted.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80eb-af97-c74b3a7257f3" class="bulleted-list"><li style="list-style-type:disc">The <strong>WAF sits in front of the web server</strong>, often <strong>behind a traditional firewall</strong>, and <strong>analyzes requests before passing them to the application server</strong>.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8013-b805-dac833f954ed" class="">Summary:</h3></div><div style="display:contents" dir="ltr"><table id="2442bf6c-3445-80a7-8c10-d75638919331" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2442bf6c-3445-80ab-bcd1-f5a58c391735"><th id="Rcjv" class="simple-table-header-color simple-table-header">Feature</th><th id="~z^Q" class="simple-table-header-color simple-table-header">DMZ</th><th id="xISz" class="simple-table-header-color simple-table-header">WAF</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2442bf6c-3445-8045-a143-e647a7450637"><td id="Rcjv" class="">Purpose</td><td id="~z^Q" class="">Network segmentation</td><td id="xISz" class="">Application-layer protection</td></tr></div><div style="display:contents" dir="ltr"><tr id="2442bf6c-3445-80ce-a135-c597b7f7b263"><td id="Rcjv" class="">Protection Level</td><td id="~z^Q" class="">Network-level</td><td id="xISz" class="">Application-level</td></tr></div><div style="display:contents" dir="ltr"><tr id="2442bf6c-3445-8070-bb62-d0bf566279b7"><td id="Rcjv" class="">Placement</td><td id="~z^Q" class="">Between external and internal networks</td><td id="xISz" class="">In front of web application servers</td></tr></div><div style="display:contents" dir="ltr"><tr id="2442bf6c-3445-8042-ada8-e9c6cd720ec6"><td id="Rcjv" class="">Filters</td><td id="~z^Q" class="">General network traffic</td><td id="xISz" class="">HTTP/HTTPS traffic specifically</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-8007-a44e-f1d2693e5643" class=""><strong>How does a Web Application Firewall (WAF) function in a network?<br/>It monitors all traffic from the outside for malicious behavior before passing commands to a web server</strong></blockquote></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-80ff-b106-e3d03ee34ace" class=""><strong>Virtual Private Network (VPN)</strong></h2></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80b7-ba60-da09a2fb6f61" class="">A <strong>VPN</strong> is a <strong>point-to-point connection</strong> between two systems over a public network like the internet. While not always encrypted by default, <strong>security and encryption</strong> can be added with proper configuration. VPNs allow <strong>remote users or different office sites</strong> to securely access a central network, simulating the experience of being on the internal network. They&#x27;re commonly used for <strong>remote access</strong> and <strong>secure gateway-to-gateway communication</strong>, replacing costly private lines.</p></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-80d6-81f2-fc9175fc29db" class=""><strong>What is a potential alternative to expensive dedicated point-to-point connections?<br/>Gateway-to-gateway VPNs</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80ab-b17b-d05c90e0681d" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-804e-a61a-e2f440cb6ee9" class=""><strong>Security of the Network</strong></h2></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-800d-baef-c489a77eb17e" class="toggle"><li><details open=""><summary>🔐 Security of the Network – Understanding TCP/IP Vulnerabilities</summary><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80fe-b83e-eafe86305432" class="">The <strong>TCP/IP protocol suite</strong>, which is the foundation of communication over the internet and most networks, was not originally designed with strong security in mind. As a result, it has <strong>several vulnerabilities</strong> that attackers can exploit, especially when the <strong>TCP/IP stack</strong> is improperly implemented in an operating system.</p></div><div style="display:contents" dir="auto"><hr id="2442bf6c-3445-804f-a927-f49d6b61f648"/></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8019-ad32-c1c651867206" class="">🚨 Common TCP/IP Vulnerabilities:</h3></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-80be-bf09-e9fed571a900" class="numbered-list" start="1"><li><strong>DoS/DDoS Attacks (Denial of Service / Distributed Denial of Service)</strong><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80cd-be71-d889493bb522" class="bulleted-list"><li style="list-style-type:disc">Attackers flood a system or network with excessive traffic to exhaust resources and make services unavailable.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-8039-83da-fc9a662e5eb5" class="numbered-list" start="2"><li><strong>Fragmentation Attacks</strong><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8020-8864-cd18b488cdc8" class="bulleted-list"><li style="list-style-type:disc">Attackers manipulate how packets are fragmented and reassembled to evade detection or crash systems.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-809e-8390-c215628d35f8" class="numbered-list" start="3"><li><strong>Oversized Packet Attacks</strong><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80d3-91a1-da3b981393d1" class="bulleted-list"><li style="list-style-type:disc">Sending larger-than-normal packets can crash or destabilize network devices with poor input validation.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-8071-817b-fee6edecc562" class="numbered-list" start="4"><li><strong>Spoofing Attacks</strong><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8096-9fe5-e98adddeba58" class="bulleted-list"><li style="list-style-type:disc">In spoofing, an attacker falsifies the source IP address of packets to trick a system into believing the data is from a trusted source.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-8090-b4e2-ee254f442991" class="numbered-list" start="5"><li><strong>Man-in-the-Middle (MitM) Attacks</strong><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-801c-b5c8-ec24caf47fc2" class="bulleted-list"><li style="list-style-type:disc">The attacker intercepts and possibly alters communication between two parties without their knowledge.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><hr id="2442bf6c-3445-8081-bd46-dc60dac1af2d"/></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8084-b924-c0efaa052be8" class="">🕵️‍♂️ Passive Attacks – Sniffing or Monitoring</h3></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8048-8dff-d76dd7565877" class="">Even if active attacks are prevented, <strong>passive attacks</strong> can still occur:</p></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8057-a806-f98130910cab" class="bulleted-list"><li style="list-style-type:disc"><strong>Sniffing (Network Monitoring)</strong>:<div style="display:contents" dir="auto"><p id="2442bf6c-3445-80c6-81fa-fa8b67de8fd9" class="">This involves passively listening to network traffic to capture sensitive data like usernames, passwords, or session tokens.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-804f-b2e9-ee3ee604390a" class="">Tools like Wireshark or tcpdump can be used for legitimate analysis—but also misused for spying.</p></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2442bf6c-3445-8036-945f-d0454a5490ee"/></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-80fb-8f32-c8d703c3c72b" class="">🧱 Mitigation Strategies:</h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80c4-af1a-f0998159c8d9" class="bulleted-list"><li style="list-style-type:disc">Use <strong>network segmentation</strong> and <strong>firewalls</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8063-9db6-c04928c39111" class="bulleted-list"><li style="list-style-type:disc">Encrypt data in transit using <strong>TLS/SSL</strong> and <strong>VPNs</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-807b-bc89-e746d3912978" class="bulleted-list"><li style="list-style-type:disc">Deploy <strong>intrusion detection/prevention systems (IDS/IPS)</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-800a-84db-c28b40c59910" class="bulleted-list"><li style="list-style-type:disc">Regularly <strong>update operating systems and firmware</strong> to patch known vulnerabilities in the TCP/IP stack.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8068-b0b7-d4f70bb9237c" class="bulleted-list"><li style="list-style-type:disc">Use <strong>strong authentication and access controls</strong>.</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-807f-a801-ebd31e0a2aa6" class=""><strong>What is network monitoring or sniffing?<br/>Monitoring traffic patterns to obtain information about a network</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80d2-9b0b-f762f7e69bcc" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-8098-9acf-ffcd2bd92bbb" class=""><strong>SYN, SYN-ACK, ACK Handshake / 3-Way Handshake</strong></h2></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80a6-8a56-db9348c9dcb9" class="">Before a client and server can communicate over TCP (Transmission Control Protocol), they must establish a reliable connection. This process is called the <strong>three-way handshake</strong>.</p></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80ea-a3fc-cd941a7870a3" class="toggle"><li><details open=""><summary>Let’s break it down in a simple scenario—when a client (like your browser) wants to connect to a <strong>web server</strong> (like a website on port 80 for HTTP or port 443 for HTTPS):</summary><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-80fa-8938-c96d7be15f27" class="">🔁 The Steps of the 3-Way Handshake:</h3></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-8000-8561-fe1d25c870ba" class="numbered-list" start="1"><li><strong>SYN (Synchronize)</strong><div style="display:contents" dir="auto"><p id="2442bf6c-3445-809e-92f7-e78a1c720e80" class="">The <strong>client</strong> sends a TCP packet with the <strong>SYN</strong> flag set to the <strong>server&#x27;s IP address and port 80 or 443</strong>.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8041-a454-faa2279ad3a4" class="">👉 This means: <em>&quot;I want to start a connection and here’s my initial sequence number.&quot;</em></p></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-80c4-b1f2-dd764bfc0f87" class="numbered-list" start="2"><li><strong>SYN-ACK (Synchronize-Acknowledge)</strong><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8083-b7bc-dbdf803fe666" class="">The <strong>server</strong> responds with a packet that has both the <strong>SYN</strong> and <strong>ACK</strong> flags set.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8033-a390-fd62ba95758d" class="">👉 This means: <em>&quot;I got your request. Here’s my sequence number, and I acknowledge yours.&quot;</em></p></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2442bf6c-3445-8068-a3c7-d82b4b643ad4" class="numbered-list" start="3"><li><strong>ACK (Acknowledge)</strong><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80fa-9584-dccd2938663a" class="">The <strong>client</strong> sends back an <strong>ACK</strong> packet to acknowledge the server&#x27;s sequence number.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8028-8f24-f2ab48da21b8" class="">👉 This means: <em>&quot;Acknowledged. We’re now connected!&quot;</em></p></div></li></ol></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8022-92d4-f3d6ffa91727" class="">✅ What Happens Next?</h3></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80ee-b66d-c885b4a12163" class="">After this handshake is complete, a <strong>TCP connection</strong> is established. The client and server can now begin <strong>secure or insecure data exchange</strong>, depending on the protocol (e.g., HTTPS or HTTP).</p></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8060-8a0b-f473bc6b9acb" class="">📌 Why It Matters:</h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80e4-ba7b-ee3e4e251836" class="bulleted-list"><li style="list-style-type:disc">Ensures both parties are <strong>ready</strong> to communicate.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8030-89e3-c54146fc0c97" class="bulleted-list"><li style="list-style-type:disc">Sets up <strong>sequence numbers</strong> for tracking data.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80b4-bcab-f7c9b0d5a09a" class="bulleted-list"><li style="list-style-type:disc">Prevents <strong>data loss or corruption</strong> during transmission.</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-8029-9695-e66c0057a3f6" class=""><strong>What is the purpose of the three-way handshake in networking?<br/>Synchronizing and acknowledging requests</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80b1-8beb-c95a69a77185" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8038-af8e-e663952a36bc" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-80fe-b9b7-db6288a6de15" class="">Cloud Computing</h2></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80a5-b083-cc73d33f8e01" class="toggle"><li><details open=""><summary><strong>Definition</strong>: Cloud computing is the <strong>on-demand delivery</strong> of computing services (like servers, storage, databases, networking, software) over the <strong>internet</strong>, offered by <strong>Cloud Service Providers (CSPs)</strong>.</summary><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8092-98e3-c9616474cec3" class="bulleted-list"><li style="list-style-type:disc"><strong>How it Works</strong>: Just like electricity from a power grid — you <strong>use what you need</strong> and <strong>pay only for what you use</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-803d-acd0-f368e417b64b" class="bulleted-list"><li style="list-style-type:disc"><strong>Key Features</strong>:<div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80aa-a733-e6b914f50353" class="bulleted-list"><li style="list-style-type:circle"><strong>Scalable</strong>: You can increase or decrease resources based on need.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80f3-b6e0-d4a2f0ffa9bf" class="bulleted-list"><li style="list-style-type:circle"><strong>Elastic</strong>: Automatically adjusts to workload changes.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-807f-89bd-fda364e5b680" class="bulleted-list"><li style="list-style-type:circle"><strong>Accessible</strong>: Available over the internet anytime, anywhere.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80d0-a6c2-d922cd9a1634" class="bulleted-list"><li style="list-style-type:circle"><strong>Easy provisioning</strong>: Resources can be quickly set up or released with little effort.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-807f-b66c-dfd469e0c537" class="bulleted-list"><li style="list-style-type:disc"><strong>NIST Definition (SP 800-145)</strong>:<div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-8081-b53a-c922a5e09d25" class="">&quot;A model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.&quot;</blockquote></div></li></ul></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-8028-88b0-e921a928bf74" class=""><strong>Which organization&#x27;s definition of cloud computing is commonly used globally?<br/>National Institute of Standards and Technology (NIST)</strong></blockquote></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8096-9e73-d6fbaf9adae0" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-8091-b4eb-fa1304202c3b" class=""><strong>Cloud Redundancy</strong></h2></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-807f-b94e-fbf2ed5cb077" class="">Organizations are moving to <strong>cloud-based systems</strong> instead of maintaining physical server rooms because the cloud offers <strong>better flexibility, security, and reliability</strong>.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8073-b0c5-fd50040535c0" class="">Cloud providers (like AWS, Azure) have <strong>multiple availability zones</strong>. If one zone fails, the system <strong>automatically switches</strong> to another, ensuring <strong>no downtime</strong> — this is called <strong>cloud redundancy</strong>.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-807e-882d-f8992c35023c" class="">You <strong>don’t need to build or maintain your own data center</strong>; the provider handles it for you.</p></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80d7-a23d-c57c17a47cee" class="">Cloud services are usually <strong>pay-as-you-go</strong>, and resources like storage and processing are <strong>shared (pooled)</strong> across users, making it <strong>cost-efficient and scalable</strong>.</p></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-8072-9aa1-d277f7579376" class=""><strong>What is resource pooling in the context of cloud computing?<br/>Sharing physical servers with other organizations</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8018-8467-e7be9be4c5aa" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8007-8dc9-ec02d5461b0a" class=""><strong>Service Models</strong></h3></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8059-9b98-e3218fe92861" class="">Cloud services come in three main models, each with different levels of responsibility:</p></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8035-ae31-f4e4951f5e10" class="bulleted-list"><li style="list-style-type:disc"><strong>SaaS (Software as a Service)</strong>: The provider manages everything — you just use the software (e.g., Gmail, Microsoft 365).</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80b2-b33c-c0a3ceddf51b" class="bulleted-list"><li style="list-style-type:disc"><strong>PaaS (Platform as a Service)</strong>: You manage the apps and data; the provider handles servers and infrastructure (e.g., Google App Engine).</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-807d-9d1e-cbf664c33b29" class="bulleted-list"><li style="list-style-type:disc"><strong>IaaS (Infrastructure as a Service)</strong>: You control the OS, apps, and data; the provider only supplies the raw infrastructure (e.g., AWS EC2).</li></ul></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-806b-bc68-c9123fcac276" class="">Organizations must ensure <strong>security</strong> (especially for data) based on which model they use, as <strong>responsibility varies</strong> between provider and user.</p></div><div style="display:contents" dir="ltr"><figure id="2442bf6c-3445-8001-a65e-d630d2cd33b4" class="image"><a href="Domain%204%20Network%20Security/image%208.png"><img style="width:336px" src="Domain%204%20Network%20Security/image%208.png"/></a></figure></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-806f-9634-d48bc17fe163" class=""><strong>What is a cloud arrangement in which the provider owns and manages the hardware, operating system, and applications in the cloud, while the customer retains ownership of the data?<br/>Software as a service (SaaS)</strong></blockquote></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-802f-a93b-c0fbd013a0a4" class=""><strong>Cloud Characteristics:</strong></h2></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-8006-b4cd-e1b3bb7d596d" class="">🌩️ Cloud Computing Key Traits</h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8067-b60e-ed47e47ea760" class="bulleted-list"><li style="list-style-type:disc"><strong>On-Demand Access</strong>: Resources available anytime, anywhere</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8042-b2a5-fa1a60f675d9" class="bulleted-list"><li style="list-style-type:disc"><strong>Scalable &amp; Flexible</strong>: Easily adjust resources based on needs</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80f2-9667-c184c2188e57" class="bulleted-list"><li style="list-style-type:disc"><strong>Metered Usage</strong>: Pay only for what you use; can be billed to departments</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8027-b541-c1e5f0a6f978" class="bulleted-list"><li style="list-style-type:disc"><strong>Lower Costs</strong>: No upfront asset purchases, reduced maintenance &amp; support</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-801d-b00d-e6ce61de2239" class="bulleted-list"><li style="list-style-type:disc"><strong>Energy Efficient</strong>: Saves on cooling/power; supports green IT</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-802e-8dda-d19295dcead8" class="bulleted-list"><li style="list-style-type:disc"><strong>Fast Deployment</strong>: Quickly scale services without local hardware</li></ul></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-809d-856d-d2752f6bc1b8" class=""><strong>Which cloud computing model allows an enterprise to scale up new software or data-based services/solutions quickly without massive hardware installation?<br/>Platform as a Service (PaaS)(WRONG)</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80dd-8679-dc53a4f51501" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2442bf6c-3445-808f-b477-ee19caa4b3c8" class=""><strong>Managed Service Provider (MSP)</strong></h2></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-8029-af73-c765c99f1e1c" class="">An <strong>MSP</strong> is a company that <strong>manages IT services</strong> for another business — often used by <strong>small to mid-sized companies</strong>.</p></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80b9-9fe9-e0f078abd155" class="bulleted-list"><li style="list-style-type:disc">They handle tasks like <strong>network monitoring</strong>, <strong>security</strong>, <strong>patching</strong>, and <strong>daily IT operations</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80ce-b775-de631b75102b" class="bulleted-list"><li style="list-style-type:disc"><strong>Modern MSPs</strong> also offer <strong>cloud-based services</strong> and advanced options like <strong>Managed Detection and Response (MDR)</strong>, where they monitor firewalls and investigate security threats.</li></ul></div><div style="display:contents" dir="auto"><h3 id="2442bf6c-3445-802c-99c5-fee04c0aed47" class="">Common MSP Services</h3></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80bf-98ab-c6e4edb98dfe" class="bulleted-list"><li style="list-style-type:disc"><strong>Project Support</strong>: Help or extend in-house staff for specific IT projects</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80bc-b759-d0cf7d3047ce" class="bulleted-list"><li style="list-style-type:disc"><strong>Expertise</strong>: Assist with new product or service implementation</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8068-abbf-e8e2b12082f7" class="bulleted-list"><li style="list-style-type:disc"><strong>Payroll Services</strong>: Handle payroll operations</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-80eb-8df6-d04c698dad1e" class="bulleted-list"><li style="list-style-type:disc"><strong>Help Desk</strong>: Provide IT support and ticketing systems</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-805d-b311-c60ece8fcbf1" class="bulleted-list"><li style="list-style-type:disc"><strong>Security Monitoring</strong>: Detect and respond to security incidents</li></ul></div><div style="display:contents" dir="auto"><ul id="2442bf6c-3445-8016-bcde-ce7a9b79907f" class="bulleted-list"><li style="list-style-type:disc"><strong>IT Management</strong>: Manage all IT infrastructure and operations</li></ul></div><div style="display:contents" dir="auto"><blockquote id="2442bf6c-3445-8090-a503-caafb95e065c" class=""><strong>What is one of the services offered by many MSPs, where they monitor firewalls and other security tools to provide expertise in triaging events?<br/>Managed Detection and Response (MDR) Service</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2442bf6c-3445-80cc-b40b-f66529fb6e4a" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

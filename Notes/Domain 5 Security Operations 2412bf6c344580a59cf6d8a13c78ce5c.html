@@ -1,0 +1,730 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Domain 5: Security Operations</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2412bf6c-3445-80a5-9cf6-d8a13c78ce5c" class="page sans"><header><h1 class="page-title" dir="auto"><a href="https://isc2.obrizum.io/org/cc/catalogue/7c9e5e74-d23c-4749-b17b-d8f95a857b97">Domain 5: Security Operations</a></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h2 id="2472bf6c-3445-8043-a305-f4ee95755b7e" class=""><strong>Data Handling</strong></h2></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-8067-86c2-d1a6e9f0964f" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Life Cycle</strong>: Data goes through various stages—<strong>creation, usage, sharing, modification</strong>, and eventually <strong>disposal</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-80d1-89d8-fb19d634bdd0" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Security Life Cycle</strong>:<div style="display:contents" dir="auto"><p id="2472bf6c-3445-802e-bb0f-f07f76fa0d1e" class="">A model that helps <strong>align data handling with roles</strong> and <strong>responsibilities</strong> across its life stages.</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-803c-87d1-cde4516ed0fd" class="bulleted-list"><li style="list-style-type:disc"><strong>Why It’s Useful</strong>:<div style="display:contents" dir="auto"><ul id="2472bf6c-3445-803a-95df-ec02ef51440a" class="bulleted-list"><li style="list-style-type:circle">Clarifies how data is managed securely from <strong>start to end</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-80a6-9f9d-f84e4f923117" class="bulleted-list"><li style="list-style-type:circle">Links to <strong>data states</strong>:<div style="display:contents" dir="auto"><ul id="2472bf6c-3445-8014-ba68-cbef375bedee" class="bulleted-list"><li style="list-style-type:square"><strong>In Use</strong> – Actively being processed.</li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-803a-9427-f19115d7abe8" class="bulleted-list"><li style="list-style-type:square"><strong>At Rest</strong> – Stored data.</li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-80f7-b0e4-d408474dd01e" class="bulleted-list"><li style="list-style-type:square"><strong>In Motion</strong> – Transferred over a network.</li></ul></div></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2472bf6c-3445-80b5-bfac-d14c5100b171" class="">🔁 <strong>Data Security Life Cycle</strong></h3></div><div style="display:contents" dir="ltr"><figure id="2472bf6c-3445-80b4-af72-fd35f6adacd7" class="image"><a href="Domain%205%20Security%20Operations/image.png"><img style="width:192px" src="Domain%205%20Security%20Operations/image.png"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="2472bf6c-3445-8079-a825-da2f04740ed3" class="numbered-list" start="1"><li><strong>Create</strong> – Generate knowledge, typically starting as tacit (unwritten or internal).</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2472bf6c-3445-805e-b919-fee2ccd25616" class="numbered-list" start="2"><li><strong>Store</strong> – Save or record the data to make it explicit and usable.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2472bf6c-3445-8009-9152-f8ffaccbf785" class="numbered-list" start="3"><li><strong>Use</strong> – Access or modify the data as needed during operations.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2472bf6c-3445-80ec-b161-de2a31c88517" class="numbered-list" start="4"><li><strong>Share</strong> – Distribute data by copying or transferring it to others.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2472bf6c-3445-802b-82b9-fcf7b4d5bacb" class="numbered-list" start="5"><li><strong>Archive</strong> – Store data long-term when it’s not currently needed.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2472bf6c-3445-804f-847f-d658d0ba5f9f" class="numbered-list" start="6"><li><strong>Destroy</strong> – Permanently delete data when it’s no longer required.</li></ol></div><div style="display:contents" dir="auto"><blockquote id="2472bf6c-3445-80e2-a1bb-f23940522eb0" class=""><strong>What is the most important aspect of security awareness/training?<br/>Protecting health and human safety</strong></blockquote></div><div style="display:contents" dir="auto"><h3 id="2472bf6c-3445-803c-aace-ffd3ec45b14f" class="">🧱 <strong>Foundational Concepts</strong></h3></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-8076-8c3d-d6a1367b1ca6" class="bulleted-list"><li style="list-style-type:disc"><strong>Data handling</strong> involves protecting data <strong>throughout its life cycle</strong> — from creation to destruction.</li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-8064-8728-d563c4d98f3f" class="bulleted-list"><li style="list-style-type:disc">Importance is placed on <strong>recognizing the assets</strong> that need protection, based on:<div style="display:contents" dir="auto"><ul id="2472bf6c-3445-8018-a687-c1db2bc1a756" class="bulleted-list"><li style="list-style-type:circle"><strong>Value of the data</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-80b9-8c8e-ffc218756c9b" class="bulleted-list"><li style="list-style-type:circle"><strong>Risk of compromise, destruction, or tampering</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-80c6-8bc2-c7bb4a97fd47" class="bulleted-list"><li style="list-style-type:circle"><strong>Vulnerabilities and threats</strong></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h2 id="2472bf6c-3445-8031-9300-d129a2beb0e1" class="">⚖️ <strong>Regulatory Requirements</strong></h2></div><div style="display:contents" dir="auto"><p id="2472bf6c-3445-80ad-8e4b-d6f4da03bde0" class="">Different regulations govern <strong>how long</strong> and <strong>how securely</strong> data must be kept or destroyed:</p></div><div style="display:contents" dir="auto"><h3 id="2472bf6c-3445-8034-b992-e9a699d27028" class="">📌 <strong>Examples:</strong></h3></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-80cc-9d6c-d15b621d6d71" class="bulleted-list"><li style="list-style-type:disc"><strong>OSHA (U.S.)</strong>: Medical records from on-the-job injuries must be retained for <strong>30+ years</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-805c-8c96-dfe3406d250c" class="bulleted-list"><li style="list-style-type:disc"><strong>HIPAA (U.S.)</strong>: Medical records must be stored for <strong>at least 10 years</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-80aa-8249-c92b91cb9c1f" class="bulleted-list"><li style="list-style-type:disc"><strong>PCI-DSS</strong>: Strict guidelines for handling <strong>credit card information</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="2472bf6c-3445-80e8-8798-e1ef165b0ba9" class="bulleted-list"><li style="list-style-type:disc"><strong>GDPR (EU)</strong>: Rules around <strong>financial and personal data protection</strong>.</li></ul></div><div style="display:contents" dir="auto"><p id="2472bf6c-3445-8021-9cac-e309915158d7" class="">⚠️ Non-compliance can result in audits, fines, or legal trouble.</p></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80d2-8512-d99b5f494799" class="toggle"><li><details open=""><summary>🏷️ <strong>Key Data Handling Practices</strong></summary><div style="display:contents" dir="auto"><h3 id="24b2bf6c-3445-807c-ae27-c3c57c18f648" class="">1. <strong>Classification &amp; Labeling</strong></h3></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8073-b2d3-fad64759d464" class="bulleted-list"><li style="list-style-type:disc">Determine data <strong>sensitivity level</strong><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80d0-97c9-d62cdf8d988b" class="bulleted-list"><li style="list-style-type:circle">Public, confidential, restricted, etc.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8061-87ae-e9ba8cd05137" class="bulleted-list"><li style="list-style-type:disc">Apply labels to enable <strong>correct access control</strong>.</li></ul></div><div style="display:contents" dir="auto"><h3 id="24b2bf6c-3445-80c5-a3b8-cc8ddbf3b784" class="">2. <strong>Retention</strong></h3></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8035-ac6b-e7341753e521" class="bulleted-list"><li style="list-style-type:disc">Define how long data should be <strong>kept and where</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8014-80c3-f6b75329ecd6" class="bulleted-list"><li style="list-style-type:disc">Based on:<div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80d3-baa9-f536954e660f" class="bulleted-list"><li style="list-style-type:circle"><strong>Internal policy</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80ee-a2f1-d4d917ee4056" class="bulleted-list"><li style="list-style-type:circle"><strong>Regulatory standards</strong></li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="24b2bf6c-3445-803c-8a31-c78dd89ba7c5" class="">3. <strong>Defensible Destruction</strong></h3></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80ca-bdcb-cccaf3c4ef7e" class="bulleted-list"><li style="list-style-type:disc">Secure, compliant destruction with <strong>regulatory backing</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-801a-b7e3-f929294b50a2" class="bulleted-list"><li style="list-style-type:disc">Can involve:<div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80ff-9796-f884f8c2e022" class="bulleted-list"><li style="list-style-type:circle"><strong>Physical destruction</strong> (e.g., shredding drives, burning)</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80d6-8803-c62a7562a729" class="bulleted-list"><li style="list-style-type:circle"><strong>Digital destruction</strong> (e.g., secure wipe or degaussing)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-80d8-8f29-c2afeb3e2197" class="">Degaussing uses strong magnets to erase media like tapes and hard drives, but not always foolproof.</p></div><div style="display:contents" dir="auto"><h3 id="24b2bf6c-3445-806e-819c-d44ee1ab9a27" class=""><strong>Final Considerations</strong></h3></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80a5-bb7f-d4687853cff5" class="bulleted-list"><li style="list-style-type:disc"><strong>Data destruction</strong> must be <strong>complete and irreversible</strong>, especially under regulation.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80fb-a119-d900bd18aa87" class="bulleted-list"><li style="list-style-type:disc">Data may still be recoverable with <strong>advanced tools</strong>, so using <strong>certified destruction methods</strong> is crucial.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-806f-9ddb-d59f9bc8a6b1" class="bulleted-list"><li style="list-style-type:disc"><strong>Multiple jurisdictions</strong> may apply to a single data asset — be aware of <strong>all applicable laws</strong>.</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><blockquote id="2472bf6c-3445-8087-8c4b-cb77ef1bc471" class=""><strong>Which of the following can be used to map data flows through an organization and the relevant security controls used at each point along the way?<br/>Data life cycle</strong></blockquote></div><div style="display:contents" dir="auto"><blockquote id="2472bf6c-3445-80ec-8a0e-c04c5e8152bd" class=""><strong>Which of the following is the life cycle of data handling?<br/>Create, store, use, share, archive, destroy</strong></blockquote></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-8083-add8-d64ab2f310f4" class="">
+</p></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-807c-a228-c99e9bdf0ef6" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="24b2bf6c-3445-8049-aa88-d31b94fd65e4" class=""><strong>Data Handling Practices</strong></h2></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-806a-90e7-fefcb6915111" class="">Data has value and must be handled appropriately. We will explore the basics of <strong>classifying</strong> and <strong>labeling</strong> data to ensure it is treated and controlled in a manner consistent with the sensitivity of the data. In addition, we will complete the <strong>data life cycle</strong> by documenting <strong>retention requirements</strong> and ensuring data that is no longer in use is <strong>destroyed</strong>.</p></div><div style="display:contents" dir="auto"><h3 id="24b2bf6c-3445-80f1-b032-c80334cf510b" class="">Classification</h3></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8088-b63a-d9e7c62682a6" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> Protect valuable information from being stolen, leaked, or misused.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8054-96e4-ef2a827b3298" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition:</strong> Classification is assessing the potential impact if information is compromised in <strong>confidentiality, integrity, or availability</strong>, then labeling and handling it accordingly.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-807d-a5e9-cc75828d5b90" class="bulleted-list"><li style="list-style-type:disc"><strong>Process:</strong><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80cd-85f0-cfa96603bebd" class="numbered-list" start="1"><li>Assess potential loss or impact to the organization.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80a1-b22b-f7faa278730f" class="numbered-list" start="2"><li>Apply labels to indicate sensitivity and handling requirements.</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80ea-ba42-c18a13e531e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Sources of classification rules:</strong> Laws, regulations, contracts, or business standards.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-807d-9670-df21ad127cda" class="bulleted-list"><li style="list-style-type:disc"><strong>Levels of impact:</strong> Can range from <strong>minor disruption</strong> to <strong>grave consequences</strong> (e.g., loss of life, business collapse).</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-805d-ade8-c0327ba79243" class="bulleted-list"><li style="list-style-type:disc"><strong>Benefit:</strong> Allows consistent and efficient security controls for similarly classified data.</li></ul></div><div style="display:contents" dir="auto"><h3 id="24b2bf6c-3445-80a1-bb46-e6a9b5c730b9" class="">Labeling</h3></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80cf-bf9d-f11ad4407df9" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> Assign sensitivity levels to data so protection matches the potential harm from compromise.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80d1-8d09-dc9f70b32746" class="bulleted-list"><li style="list-style-type:disc"><strong>Principle:</strong> Higher sensitivity = higher security requirements.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80c0-a19b-e78de9498a01" class="bulleted-list"><li style="list-style-type:disc"><strong>Best practice:</strong><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8031-a842-cb57c77d7c78" class="bulleted-list"><li style="list-style-type:circle">Use <strong>2–4 sensitivity levels</strong> (too many can cause confusion).</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8008-8785-d3dca326b69a" class="bulleted-list"><li style="list-style-type:circle">Labels must be clear and consistent.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8060-8816-e936804b77ee" class="bulleted-list"><li style="list-style-type:disc"><strong>Common Sensitivity Levels:</strong><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80b1-b624-f88cd4b2f7c5" class="numbered-list" start="1"><li><strong>Highly Restricted</strong> – Compromise could risk organization’s survival, cause major harm, or lead to lawsuits.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-8098-90d0-e89aa0242171" class="numbered-list" start="2"><li><strong>Moderately Restricted</strong> – Compromise could cause loss of competitive advantage, revenue, or disrupt operations.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-806e-995b-da4a97b6f288" class="numbered-list" start="3"><li><strong>Low Sensitivity</strong> – Compromise causes only minor disruptions (e.g., internal use only).</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80c9-a9f5-c795fa9cfe03" class="numbered-list" start="4"><li><strong>Unrestricted/Public</strong> – Already public; no harm from disclosure.</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="24b2bf6c-3445-805a-9b5f-e188948b74ca" class="">Retention </h3></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8008-aee5-efb8044e057f" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> Keep data only as long as it’s beneficial or legally required.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-806e-b9b4-e586e7c5fc48" class="bulleted-list"><li style="list-style-type:disc"><strong>Requirements:</strong><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80e3-9dc4-f14545af46fe" class="bulleted-list"><li style="list-style-type:circle">Some industries/laws set mandatory retention periods.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-801d-83be-d458323c4830" class="bulleted-list"><li style="list-style-type:circle">If no law applies, the organization must define its own retention policy.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8036-85a8-c9a3bf9d41a9" class="bulleted-list"><li style="list-style-type:circle">Applies to both <strong>hard copy</strong> and <strong>electronic data</strong>.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-800a-9b82-f97c5d7b4417" class="bulleted-list"><li style="list-style-type:disc"><strong>Responsibilities of Security Professionals:</strong><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8081-bb43-dd49d8a5ebc2" class="bulleted-list"><li style="list-style-type:circle">Ensure timely destruction once retention limit is reached.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-805c-bf2b-e65ccb567df4" class="bulleted-list"><li style="list-style-type:circle">Maintain accurate inventory (asset location, retention period, destruction method).</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80b9-8d76-e573a587f807" class="bulleted-list"><li style="list-style-type:circle">Periodically review records to remove unnecessary data.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-800c-b64e-f585f696c051" class="bulleted-list"><li style="list-style-type:disc"><strong>Retention Policies Should:</strong><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80a6-937f-f51d1562502f" class="numbered-list" start="1"><li>Ensure personnel understand retention requirements for all data types.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80f2-9ee1-d14ea59a404e" class="numbered-list" start="2"><li>Document retention requirements for each information type.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80b6-9a84-e9d6a3f88b8b" class="numbered-list" start="3"><li>Guarantee data is kept only for the required duration, then securely destroyed.</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-806a-a905-ef12e8f2247a" class="bulleted-list"><li style="list-style-type:disc"><strong>Common Mistake in Retention</strong><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80c1-80b5-d698d8f7012f" class="numbered-list" start="1"><li>Applying the <strong>longest retention period</strong> to all data is a bad practice.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80b0-ba7b-ec179dbaefe9" class="numbered-list" start="2"><li><strong>Risks:</strong><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8043-a2f6-ce77fd413926" class="bulleted-list"><li style="list-style-type:disc">Wastes storage.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8021-b442-c0bcf4b501db" class="bulleted-list"><li style="list-style-type:disc">Increases exposure risk.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8036-b3fa-ccdd830d7ca1" class="bulleted-list"><li style="list-style-type:disc">Creates extra “noise” in searches.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-808c-b0d6-c390dfd5c566" class="bulleted-list"><li style="list-style-type:disc">May violate laws, regulations, or contracts → could lead to fines.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80f5-9a61-c3f0f4d2da21" class="numbered-list" start="3"><li><strong>Best Practice:</strong><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80c9-94cc-c77898288980" class="bulleted-list"><li style="list-style-type:disc">Destroy records no longer required, following enterprise policy and legal requirements.</li></ul></div></li></ol></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="24b2bf6c-3445-80b1-a246-ec633964f5fd" class="">Destruction</h3></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80db-a468-fb2753060cc6" class="bulleted-list"><li style="list-style-type:disc"><strong>Remanence:</strong> Residual data left after deletion; can be a security risk.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8077-aeef-c0e6b827ca83" class="bulleted-list"><li style="list-style-type:disc"><strong>Mitigation Methods:</strong><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80ae-b1be-f1da35ce021d" class="numbered-list" start="1"><li><strong>Clearing (Overwriting/Zeroizing):</strong> Write random patterns across storage. Risk: missed blocks may still contain recoverable data.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-8023-b2e3-f3384e324401" class="numbered-list" start="2"><li><strong>Purging:</strong> Removes residual physical traces after clearing (e.g., degaussing magnetic media). More secure than clearing.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-805c-935d-d14941f53380" class="numbered-list" start="3"><li><strong>Physical Destruction:</strong> Shredding, acid etching, burning, or breaking media; ensures data cannot be recovered.</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-800e-9183-ece59f211cd5" class="bulleted-list"><li style="list-style-type:disc"><strong>Operational Practices:</strong><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8017-a533-ccff6765f5ff" class="bulleted-list"><li style="list-style-type:circle"><strong>Clearing</strong> may be enough for routine use.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80da-a793-c318f65a997f" class="bulleted-list"><li style="list-style-type:circle"><strong>Purging or destruction</strong> required for sensitive data before disposal or hardware replacement.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-801b-b9db-c9000b806e35" class="">
+</p></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-80fc-9bc4-d1d1be109e72" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="24b2bf6c-3445-8037-a958-eb90ad701eb5" class=""><strong>Logging and Monitoring Security Events</strong></h2></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-803f-830e-e100c3781c61" class=""><strong>Purpose &amp; Importance</strong></p></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80e1-b2b7-cce3795812cb" class="bulleted-list"><li style="list-style-type:disc"><strong>Logging</strong>: Captures signals from system events for accountability and analysis.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8056-bf21-d29e52224c0f" class="bulleted-list"><li style="list-style-type:disc"><strong>Events</strong>: Any action in the system causing measurable changes.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8003-a0d8-e1b671c2ad09" class="bulleted-list"><li style="list-style-type:disc"><strong>Value</strong>: Helps detect compromises, policy violations, fraud, and operational issues.</li></ul></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-80b8-90ab-fe52e0883f80" class=""><strong>What to Log</strong></p></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80a6-823a-ec68896dc8da" class="bulleted-list"><li style="list-style-type:disc">User IDs</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8010-8e55-ff27e5893591" class="bulleted-list"><li style="list-style-type:disc">System activities</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8094-9f3d-e398c3eb3ebd" class="bulleted-list"><li style="list-style-type:disc">Date/time of key events (e.g., logon/logoff)</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8094-a83e-d293668d5c6a" class="bulleted-list"><li style="list-style-type:disc">Device &amp; location details</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8084-a86b-e63696644f5f" class="bulleted-list"><li style="list-style-type:disc">Successful and failed access attempts</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8061-898f-cd2a8239c27e" class="bulleted-list"><li style="list-style-type:disc">System configuration changes</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8029-a5c5-ea4338e4385a" class="bulleted-list"><li style="list-style-type:disc">Activation/deactivation of protection mechanisms</li></ul></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-806b-bbf6-f68d0c50ad3d" class=""><strong>Benefits</strong></p></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8059-9806-c610aa52c93a" class="bulleted-list"><li style="list-style-type:disc">Supports audits and forensic investigations.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80a9-a978-def7899bb909" class="bulleted-list"><li style="list-style-type:disc">Correlates data from different systems for better incident analysis.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80dd-b2e1-c7448992f798" class="bulleted-list"><li style="list-style-type:disc">Helps identify system inefficiencies and vulnerabilities.</li></ul></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-806d-8218-f0afdaeb5171" class=""><strong>Best Practices</strong></p></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8012-b86e-cfaa58ebdaa5" class="bulleted-list"><li style="list-style-type:disc">Regular log reviews.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8063-8345-dad47442854b" class="bulleted-list"><li style="list-style-type:disc">Build a <strong>log management infrastructure</strong> to:<div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80ba-9718-fa0db351627b" class="bulleted-list"><li style="list-style-type:circle">Preserve log integrity and confidentiality.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-802f-8035-ff8b59825310" class="bulleted-list"><li style="list-style-type:circle">Prevent unauthorized modifications or deletions.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8041-8690-c77a6cde82fb" class="bulleted-list"><li style="list-style-type:disc">Monitor storage capacity to avoid log loss.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8075-aee6-f2a5cf5c6d64" class="bulleted-list"><li style="list-style-type:disc">Follow legal/regulatory <strong>log retention policies</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8025-bd47-de1fb866d08b" class="bulleted-list"><li style="list-style-type:disc">Preserve <strong>original logs</strong> to prevent attackers from erasing evidence.</li></ul></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-8025-a8ad-d8a3d2570c05" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="24b2bf6c-3445-803f-9a9f-fc5b317fb3b0" class=""><strong>Data Security Event Example</strong></h2></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-802e-8b2b-f0893cfa2890" class="bulleted-list"><li style="list-style-type:disc"><strong>Raw logs</strong> can reveal attempts to break into secure files or hijack servers.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80d3-aad1-e14924785e65" class="bulleted-list"><li style="list-style-type:disc">Security engineers interpret log codes to identify:<div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80c9-a592-fae508e0e455" class="bulleted-list"><li style="list-style-type:circle">Who attempted the access</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-807a-affb-e37b5733397d" class="bulleted-list"><li style="list-style-type:circle">Whether a secure or suspicious port was used</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80fe-ac22-f5a84f8c97c6" class="bulleted-list"><li style="list-style-type:disc">Some tools provide more user-friendly monitoring, but raw log familiarity is still valuable.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-809d-a426-e4886e0f791e" class="bulleted-list"><li style="list-style-type:disc"><strong>Security must be planned from the start</strong> — not added as a quick fix.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80a0-9f25-d9af43ab70aa" class="bulleted-list"><li style="list-style-type:disc">System patching and updates help, but without a secure foundation, protection will be weak.</li></ul></div><div style="display:contents" dir="ltr"><figure id="24b2bf6c-3445-80f5-9ea8-d62898e5b84b" class="image"><a href="Domain%205%20Security%20Operations/image%201.png"><img style="width:576px" src="Domain%205%20Security%20Operations/image%201.png"/></a><figcaption>Raw log</figcaption></figure></div><div style="display:contents" dir="auto"><h2 id="24b2bf6c-3445-807d-8850-ed521367bce3" class=""><strong>Event Logging Best Practices</strong></h2></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-805d-8581-de272d7394be" class="">Different tools are used depending  on whether the risk from the attack is from traffic coming into or leaving the infrastructure.</p></div><div style="display:contents" dir="auto"><h3 id="24b2bf6c-3445-80f9-97bb-ed76b9d1c314" class=""><strong>Ingress Monitoring</strong> (inbound traffic)</h3></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-808a-b467-d95a9bbb10f7" class="bulleted-list"><li style="list-style-type:disc">Tracks and assesses all incoming communications and access attempts.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8068-9556-f9dc78cf6bc0" class="bulleted-list"><li style="list-style-type:disc">Common tools/devices:<div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80ba-8db2-dfc1ff2e750a" class="bulleted-list"><li style="list-style-type:circle">Firewalls</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8086-9206-fb8a9db41b79" class="bulleted-list"><li style="list-style-type:circle">Gateways</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80e7-a276-f4ef9578bdc4" class="bulleted-list"><li style="list-style-type:circle">Remote authentication servers</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8076-9ca2-f2dadac1f55a" class="bulleted-list"><li style="list-style-type:circle">IDS/IPS (Intrusion Detection/Prevention Systems)</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8078-844d-d9b4fc970b00" class="bulleted-list"><li style="list-style-type:circle">SIEM (Security Information and Event Management) solutions</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-802a-83a1-daa4653eb717" class="bulleted-list"><li style="list-style-type:circle">Anti-malware tools</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="24b2bf6c-3445-8008-8ca1-ea5fb968154e" class=""><strong>Egress Monitoring</strong> (outbound traffic)</h3></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-801c-9625-f198e0a83615" class="bulleted-list"><li style="list-style-type:disc">Controls and inspects data leaving the organization.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80f6-8b56-cc55a3ea04b9" class="bulleted-list"><li style="list-style-type:disc">Often referred to as <strong>Data Loss Prevention (DLP)</strong> or <strong>Data Leak Protection</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-802c-9e1f-c9fd38c8d687" class="bulleted-list"><li style="list-style-type:disc">DLP should monitor:<div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80b9-a232-c1887d77c498" class="bulleted-list"><li style="list-style-type:circle">Email (content + attachments)</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80f9-aabe-c3944b64d973" class="bulleted-list"><li style="list-style-type:circle">Portable media copies</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80b8-bc14-df7c7228a74a" class="bulleted-list"><li style="list-style-type:circle">FTP transfers</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-802e-9244-c780d40b9bce" class="bulleted-list"><li style="list-style-type:circle">Website posting</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-808c-ba9a-d65b64551398" class="bulleted-list"><li style="list-style-type:circle">Applications / APIs</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="24b2bf6c-3445-8094-8eb4-d1144c2cc801" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="24b2bf6c-3445-8004-948f-c3b0d767a88d" class=""><strong>Encryption Overview</strong></h2></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8084-93e1-f1fd871c058d" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>:<div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-807a-994f-d57fdfa649a9" class="bulleted-list"><li style="list-style-type:circle">Protects personal/business transactions.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80b5-aab5-eae9dbd159ae" class="bulleted-list"><li style="list-style-type:circle">Verifies authenticity of software updates and contracts.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-809c-bd04-c7dfaa5faeef" class="bulleted-list"><li style="list-style-type:circle">Keeps information unintelligible without the correct decryption key.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8021-95ae-e68f0dea33e3" class="bulleted-list"><li style="list-style-type:disc"><strong>Process</strong>:<div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80af-ba71-d63bc53556b9" class="bulleted-list"><li style="list-style-type:circle"><strong>Plaintext</strong> (original data) → encrypted into <strong>ciphertext</strong> (unreadable form).</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80a5-b19d-fe91ca583fe6" class="bulleted-list"><li style="list-style-type:circle">Only authorized parties can decrypt and read.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8002-abdc-f29aed6a0624" class="bulleted-list"><li style="list-style-type:disc"><strong>Core Security Services</strong>:<div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-8078-b8a1-d3270eaf5a70" class="numbered-list" start="1"><li><strong>Confidentiality</strong> – Ensures only authorized recipients can read the message.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24b2bf6c-3445-80ec-8f58-e493fdacc4e8" class="numbered-list" start="2"><li><strong>Integrity</strong> – Hashes &amp; digital signatures verify data hasn’t been altered.</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80a7-966a-f7eb73262528" class="bulleted-list"><li style="list-style-type:disc"><strong>Encryption System Components</strong>:<div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8073-9833-e6f9c884b61d" class="bulleted-list"><li style="list-style-type:circle">Hardware, software, algorithms, control parameters, operational methods.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80c6-bda8-c2f7eba6975d" class="bulleted-list"><li style="list-style-type:disc"><strong>Plaintext Examples</strong>:<div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80a7-a66b-ef1f9341893d" class="bulleted-list"><li style="list-style-type:circle">Images, audio, video (raw or compressed).</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-801a-8ed2-f0be1e11403c" class="bulleted-list"><li style="list-style-type:circle">Human-readable text or numeric data (with/without formatting metadata).</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-80d3-8e4d-c87caee3578b" class="bulleted-list"><li style="list-style-type:circle">Database files or fields.</li></ul></div><div style="display:contents" dir="auto"><ul id="24b2bf6c-3445-8091-8dd6-dade646e57e6" class="bulleted-list"><li style="list-style-type:circle">Any digital data, even if not human-readable.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="24d2bf6c-3445-80d8-b4b4-e4708e55d798" class=""><strong>Encryption Deep Dive</strong></h3></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8001-873c-f86ac7c19409" class="bulleted-list"><li style="list-style-type:disc"><strong>Historical Use</strong>:<div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8047-b989-c91442bca1a8" class="bulleted-list"><li style="list-style-type:circle">Dates back to <strong>Magura cave drawings</strong> and <strong>Egyptian pyramids</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8059-9c74-fa64dda0c6da" class="bulleted-list"><li style="list-style-type:circle">Used to keep secrets (e.g., hunting grounds, resources) from rival groups.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8052-a1d3-ebcd223bd8ba" class="bulleted-list"><li style="list-style-type:disc"><strong>Basic Process</strong>:<div style="display:contents" dir="auto"><ol type="1" id="24d2bf6c-3445-80b6-9e1b-f9235a63bf01" class="numbered-list" start="1"><li>Start with <strong>clear text</strong> (readable info).</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24d2bf6c-3445-8003-8431-fbc33b202014" class="numbered-list" start="2"><li>Apply an <strong>algorithm</strong> to convert it into <strong>ciphertext</strong> (unreadable).</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24d2bf6c-3445-8043-af62-d3c46248caeb" class="numbered-list" start="3"><li>Unlock using an <strong>encryption key</strong>.</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-803c-856b-e1b292615924" class="bulleted-list"><li style="list-style-type:disc"><strong>Modern Example</strong>:<div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-801a-8dd9-ef6f5968bb55" class="bulleted-list"><li style="list-style-type:circle">Encrypting a PDF from your accountant before sending tax documents.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-806d-a24b-e7e682bd11ba" class="bulleted-list"><li style="list-style-type:circle">Only sender and receiver with the <strong>preset key</strong> can access it.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8024-9301-c960c8139d10" class="bulleted-list"><li style="list-style-type:disc"><strong>Key Management</strong>:<div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8097-9c1c-f5c76b802f31" class="bulleted-list"><li style="list-style-type:circle">Safeguard keys to prevent unauthorized access.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8091-8b44-c3fe721ff247" class="bulleted-list"><li style="list-style-type:circle">In business, keys often stored &amp; managed by a <strong>third party</strong> or <strong>external server</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80e1-a60e-e3b064b80d80" class="bulleted-list"><li style="list-style-type:circle">Protected with <strong>hashing</strong> for added security.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8007-9692-ed5f3464824a" class="bulleted-list"><li style="list-style-type:disc"><strong>Asymmetric Encryption</strong>:<div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8006-a3b9-fecd8f34a5b8" class="bulleted-list"><li style="list-style-type:circle">Sender &amp; receiver each have unique keys (often digital certificates).</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80d8-a44d-d08e329f7177" class="bulleted-list"><li style="list-style-type:circle">Confirms sender’s identity and ensures secure delivery.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><blockquote id="24d2bf6c-3445-8018-b66e-dec87c0bd25b" class=""><strong>Why is asymmetric encryption considered more secure?<br/>It involves a unique code for the sender and receiver</strong></blockquote></div><div style="display:contents" dir="auto"><h3 id="24d2bf6c-3445-80c1-8256-c09e72925597" class=""><strong>How Passwords Work</strong></h3></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-800d-93cd-ed368fa846b4" class="bulleted-list"><li style="list-style-type:disc">Passwords are stored as <strong>hash values</strong> (digests), not in plain text.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80c8-ad7f-f27cbd2d1aaa" class="bulleted-list"><li style="list-style-type:disc">A secure password with letters, numbers, and symbols generates a unique hash.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-807d-abc6-c011ca4b6c4c" class="bulleted-list"><li style="list-style-type:disc">Systems check passwords by comparing hash values, not the actual password.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-809f-9941-fc11d1f66392" class="bulleted-list"><li style="list-style-type:disc">Users are often required to create strong passwords (minimum length, complexity).</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80bf-a214-f8c5ba4bc685" class="bulleted-list"><li style="list-style-type:disc">Attackers can steal hashed password files and use <strong>offline attacks</strong> (e.g., brute force) to guess them.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8083-911a-e133a107130e" class="bulleted-list"><li style="list-style-type:disc">If they know the hash algorithm, they can try random combinations until the hash matches.</li></ul></div><div style="display:contents" dir="auto"><blockquote id="24d2bf6c-3445-8005-9271-faca0f79555b" class=""><strong>What do integrity services, provided by hash functions and digital signatures, allow a recipient to verify?<br/>That a message has not been altered by malice or error</strong></blockquote></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-80b1-bc38-eb7dda38e1d1" class="">
+</p></div><div style="display:contents" dir="auto"><blockquote id="24d2bf6c-3445-807e-82be-e1a6f2678623" class=""><strong>What is the primary purpose of storing passwords as hash values or digests?<br/>To create a more secure password management system(WRONG)</strong></blockquote></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-8093-b7e2-c8257d6d03b8" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="24d2bf6c-3445-807c-8417-fe5d049ed22a" class=""><strong>Password Advice and Examples</strong></h3></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8095-be7e-d695c6bf96f0" class="bulleted-list"><li style="list-style-type:disc"><strong>10-digit numeric password</strong> → Can be cracked in ~5 seconds.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80bb-ba9a-de1ae0881021" class="bulleted-list"><li style="list-style-type:disc"><strong>8-character mixed password</strong> (upper, lower, numbers, symbols) → ~35 days to crack.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-801e-86de-ecc7fff90e2e" class="bulleted-list"><li style="list-style-type:disc"><strong>16-character password</strong> (at least 1 uppercase + 1 special character) → ~152,000 years to crack.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8005-8754-e2ed0d756b0c" class="bulleted-list"><li style="list-style-type:disc"><strong>Key takeaway:</strong> Longer, more complex passwords drastically increase security.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-800a-bc94-d37205450572" class="bulleted-list"><li style="list-style-type:disc"><strong>Best practice:</strong> Follow strong password policies and procedures for maximum protection.</li></ul></div><div style="display:contents" dir="auto"><blockquote id="24d2bf6c-3445-8077-85ba-d89538392ac4" class=""><strong>How long does it take to crack a 10-number password using software with cryptographic calculation?<br/>5 seconds</strong></blockquote></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-80a7-a884-c112eee1182d" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="24d2bf6c-3445-801a-942e-c7adeebab3cc" class=""><strong>Hashing Deep Dive</strong></h2></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8085-bc9c-ccec996fcc50" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition</strong>: Hashing converts data into a fixed-length alphanumeric string (digest) using a hash function. In hashing, <strong>the digest (output) length is fixed</strong> for a given hash algorithm, no matter how big or small the input is.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8033-99e0-d6ac3d7c1382" class="bulleted-list"><li style="list-style-type:disc"><strong>Key Property</strong>: Any small change in input creates a completely different digest.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80f8-8f0f-fb2f468bb702" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose</strong>: Confirms data integrity—ensures data hasn’t been altered.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-801e-b353-c79cdf496d12" class="bulleted-list"><li style="list-style-type:disc"><strong>Example</strong>: If a payment amount changes from 5000 to 50,000 then the digest changes, alerting to tampering.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-804e-a67d-c092f9fb8fd0" class="bulleted-list"><li style="list-style-type:disc"><strong>Use in Software</strong>: Compare a provided digest (checksum) with the original to detect unauthorized changes.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80ce-b192-ef949c5e4a89" class="bulleted-list"><li style="list-style-type:disc"><strong>Real Case</strong>: At the University of Florida, Windows 2000 or Millennium, was provided to 50,000 students via CD-ROMs - compromised software CDs were detected due to mismatched digests.</li></ul></div><div style="display:contents" dir="auto"><blockquote id="24d2bf6c-3445-802a-b01a-ce0ab8bf300f" class=""><strong>How does hashing respond to minor changes in the input, such as misspellings or changes in letter case?<br/>It generates a different hash digest for each input</strong></blockquote></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-802e-8c74-cf76f106e9a7" class="">
+</p></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-80d5-b383-fce49021c6e1" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8048-be94-dde15b2589a0" class="bulleted-list"><li style="list-style-type:disc"><strong>Extra Defense</strong>: Helps detect both accidental and malicious alterations before data or software is deployed.</li></ul></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-8097-a98b-d40d6590bc7e" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="24d2bf6c-3445-80e2-9fcf-f8ec414d1fc9" class=""><strong>Configuration Management Overview</strong></h2></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8077-969f-e357db2ee13f" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> Ensures only authorized and validated changes are made to a system.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8021-b443-ece105243e3a" class="bulleted-list"><li style="list-style-type:disc"><strong>Key Components:</strong><div style="display:contents" dir="auto"><ol type="1" id="24d2bf6c-3445-8098-adb4-e4ea8de430fd" class="numbered-list" start="1"><li><strong>Identification:</strong> Define the system’s baseline (components, interfaces, documentation).</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24d2bf6c-3445-8066-b8a9-d6d5c7c501bb" class="numbered-list" start="2"><li><strong>Baseline:</strong> Minimum security standard used as a reference for updates.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24d2bf6c-3445-8074-a1d9-fc168d85aef8" class="numbered-list" start="3"><li><strong>Change Control:</strong> Process to request, review, approve, and apply updates or patches.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24d2bf6c-3445-805d-bea6-e6151dfd6b6d" class="numbered-list" start="4"><li><strong>Verification &amp; Audit:</strong> Test and validate changes; ensure system matches the baseline + approved changes.</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-806f-91bd-f0ccba6a001e" class=""><strong>1. Inventory</strong></p></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8038-9b3d-fe52dbbb62c1" class="bulleted-list"><li style="list-style-type:disc">First step in asset management: create a registry of all assets (especially information assets).</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8021-9d3e-f21daecdb304" class="bulleted-list"><li style="list-style-type:disc">Essential principle: <em>You can’t protect what you don’t know you have.</em></li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-808b-aaa9-fea969a110f8" class="bulleted-list"><li style="list-style-type:disc">Keeping it current is challenging, especially for all hosts, endpoints, and their data.</li></ul></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-80bf-a93f-f264679594c5" class=""><strong>2. Baselines</strong></p></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8059-b3a1-ebba4b410636" class="bulleted-list"><li style="list-style-type:disc">Complete record of all system components (hardware, software, data, controls, docs, user instructions).</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80b8-a274-d841290db7a8" class="bulleted-list"><li style="list-style-type:disc">Used as a reference for comparison, updates, and development.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8089-b117-cb8374ffce5f" class="bulleted-list"><li style="list-style-type:disc">Supports minimum protection levels based on asset classification (e.g., high, medium, low).</li></ul></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-806a-8790-e62e0bdd04d1" class=""><strong>3. Updates</strong></p></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80fb-85d4-f7ae93dc399d" class="bulleted-list"><li style="list-style-type:disc">Repairs, maintenance, and upgrades across infrastructure, OS, applications, and networks.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80aa-9241-e48524e4e16e" class="bulleted-list"><li style="list-style-type:disc">Require:<div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8061-b97f-f9a44f9f305f" class="bulleted-list"><li style="list-style-type:circle"><strong>Acceptance testing</strong> (new functions work).</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80b4-bafc-cf848373d5eb" class="bulleted-list"><li style="list-style-type:circle"><strong>Regression testing</strong> (no new issues introduced).</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80ac-a1a2-dbfa1fb7e6d7" class="bulleted-list"><li style="list-style-type:disc">Continuous security testing ensures updates keep systems secure.</li></ul></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-80f2-9b93-ed34ffbea6db" class=""><strong>4. Patches</strong></p></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8024-bf37-f4bedfc50010" class="bulleted-list"><li style="list-style-type:disc">Software/hardware modifications to fix vulnerabilities or improve functionality.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8094-8d2b-eddb2eb02ba0" class="bulleted-list"><li style="list-style-type:disc"><strong>Challenges:</strong><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8076-9a9e-de6630889acb" class="bulleted-list"><li style="list-style-type:circle">Multiple vendors, irregular schedules.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80a7-84d7-d4bd3404697f" class="bulleted-list"><li style="list-style-type:circle">Risk of flawed patches—testing is crucial.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8045-acb1-f03a7c309458" class="bulleted-list"><li style="list-style-type:circle">Some patches critical → deploy quickly; others less urgent but may be prerequisites.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-804e-804c-e37ae0a3a669" class="bulleted-list"><li style="list-style-type:disc">Testing ideally in environments mirroring production (rare due to cost).</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8012-8859-d8788fcd105a" class="bulleted-list"><li style="list-style-type:disc">Rollback plans needed if a patch causes problems.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80ba-8730-d81d69fb9046" class="bulleted-list"><li style="list-style-type:disc">Automated patching can save time but risks unexpected outages.</li></ul></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-802b-8b94-d7878f1aca5e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-808d-9cdd-cf1df517542b" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="24d2bf6c-3445-80e1-b307-c41a4208320f" class=""><strong>The Risks of Change</strong></h2></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-801d-beba-d96dc6cd3e01" class="bulleted-list"><li style="list-style-type:disc">Have a <strong>robust change management process</strong> in place.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8055-8eb1-d10429b970d7" class="bulleted-list"><li style="list-style-type:disc"><strong>Test changes</strong> in a model or testing environment before applying them to production.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8062-8343-f5f8100dfabf" class="bulleted-list"><li style="list-style-type:disc">Always prepare a <strong>rollback plan</strong> – restore the system to the last known good state if something goes wrong.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-805b-8ac0-e62579131221" class="bulleted-list"><li style="list-style-type:disc"><strong>Review and test patches</strong> before deployment; be able to restore previous configurations.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8017-98a4-c84541e75013" class="bulleted-list"><li style="list-style-type:disc">Maintaining a <strong>separate test environment</strong> can be challenging, so some organizations rely on <strong>vendor or third-party testing</strong> instead.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80bd-ad07-f5726f72f8ea" class="bulleted-list"><li style="list-style-type:disc">Rollback plans are <strong>especially critical</strong> when full testing isn’t possible before implementation.</li></ul></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-8092-9e97-d94c2ea35212" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="24d2bf6c-3445-8092-a98d-dcb1d4e23d11" class=""><strong>Security Awareness Training</strong></h2></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80b5-9448-cab696555906" class="bulleted-list"><li style="list-style-type:disc"><strong>Purpose:</strong> Ensure everyone understands their security responsibilities and identify risky behaviors like carelessness or complacency.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80ef-bc21-c74b746c2764" class="bulleted-list"><li style="list-style-type:disc"><strong>Three types of learning:</strong><div style="display:contents" dir="auto"><ol type="1" id="24d2bf6c-3445-803e-b311-eb8bc6d4fe58" class="numbered-list" start="1"><li><strong>Education</strong> – Improves understanding and ability to apply concepts to real situations.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24d2bf6c-3445-80a8-a9d6-c9c57bf96ba1" class="numbered-list" start="2"><li><strong>Training</strong> – Builds specific skills and decision-making on when/how to use them.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="24d2bf6c-3445-806d-ba28-c83ca887cb04" class="numbered-list" start="3"><li><strong>Awareness</strong> – Grabs attention and introduces important issues or needs.</li></ol></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8064-8a87-c40fd0f77278" class="bulleted-list"><li style="list-style-type:disc">Applies to all roles, from entry-level staff to executives.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80d1-aa22-e0527fb8cd66" class="bulleted-list"><li style="list-style-type:disc">Awareness is often the first step before deeper training or education.</li></ul></div><div style="display:contents" dir="auto"><blockquote id="24d2bf6c-3445-8047-8d1f-dde4e2526c30" class=""><strong>What is the purpose of security awareness training?<br/>To align information security goals with the organization&#x27;s mission and vision</strong></blockquote></div><div style="display:contents" dir="auto"><blockquote id="24d2bf6c-3445-80fb-82f8-f63e56d2be0b" class=""><strong>What is the role of security engineers in data security?<br/>Security engineers figure out who is trying to log in and assess security codes</strong></blockquote></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-8041-91c3-c24f0b3d9039" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="24d2bf6c-3445-80e1-8652-dc6713e36a9a" class=""><strong>Change Management Components in the Workplace</strong></h2></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80ed-9678-ead30d6db6e5" class="bulleted-list"><li style="list-style-type:disc"><strong>Continuous Process</strong> – Change management is ongoing, with constant monitoring of the environment.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-802f-b196-f4024ab7f07f" class="bulleted-list"><li style="list-style-type:disc"><strong>Approval Requirement</strong> – All change requests must go through proper approval channels.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80a4-b6e3-c2c8195e27a8" class="bulleted-list"><li style="list-style-type:disc"><strong>Rollback Preparedness</strong> – Have a plan to revert to the old system if the change fails.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-800a-a2f2-eb073448a80a" class="bulleted-list"><li style="list-style-type:disc"><strong>Ownership</strong> – Often coordinated by information security professionals, but may also fall under IT, development, quality, or risk management teams.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80cd-b4c6-e7c230da8a6a" class="bulleted-list"><li style="list-style-type:disc"><strong>Collaboration</strong> – Involves input from end users, IT, development, information security, and management.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-807c-a049-d451184897b2" class="bulleted-list"><li style="list-style-type:disc"><strong>Testing &amp; Communication</strong> – All changes should be tested, approved, and communicated before implementation</li></ul></div><div style="display:contents" dir="auto"><blockquote id="24d2bf6c-3445-80ac-a25e-d288693e6c1e" class=""><strong>Who is often tasked with coordinating the change management effort?<br/>Information Security professionals</strong></blockquote></div><div style="display:contents" dir="auto"><blockquote id="24d2bf6c-3445-8029-9334-fe21c92e2a1f" class=""><strong>What is meant by the term rollback?<br/>Restoring the system to its previous state before a change</strong></blockquote></div><div style="display:contents" dir="auto"><p id="24d2bf6c-3445-8045-a484-d79f20989805" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="24d2bf6c-3445-8019-844b-ef91fa7174dc" class="">Phishing</h2></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8005-b27f-dc8c39382715" class="bulleted-list"><li style="list-style-type:disc"><strong>Definition:</strong> <strong>Phishing</strong> is a type of cyberattack where attackers trick people into revealing sensitive information—such as passwords, credit card numbers, or bank details—by pretending to be a trusted entity.<br/>A cyberattack method targeting individuals, departments, or entire companies to steal sensitive information or gain access.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8017-8bb3-f2796d4a4e01" class="bulleted-list"><li style="list-style-type:disc"><strong>Variety of Methods:</strong><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80f6-a394-cc4e72df0691" class="bulleted-list"><li style="list-style-type:circle">Emails</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-8088-a2da-e006a22a6af3" class="bulleted-list"><li style="list-style-type:circle">Phone calls</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-800f-a91d-c995443f4da5" class="bulleted-list"><li style="list-style-type:circle">Spam</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80f2-bf90-d7ff95a95668" class="bulleted-list"><li style="list-style-type:circle">Instant messages</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80fc-aaaa-d859bc4d714a" class="bulleted-list"><li style="list-style-type:circle">Videos</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80cd-bfe9-ee380e41b05d" class="bulleted-list"><li style="list-style-type:circle">File attachments</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80c5-9a48-d0f6552c7d3d" class="bulleted-list"><li style="list-style-type:disc"><strong>Evolving Threat:</strong> Countless variations exist and are deployed continuously.</li></ul></div><div style="display:contents" dir="auto"><ul id="24d2bf6c-3445-80d6-ae31-ce2c733ee8c8" class="bulleted-list"><li style="list-style-type:disc"><strong>Special Case – Whaling:</strong> Targets high-ranking officials or wealthy individuals to trick them into authorizing large fund transfers to unknown entities.</li></ul></div><div style="display:contents" dir="auto"><blockquote id="24d2bf6c-3445-809e-b1e2-ed9976ec57d7" class=""><strong>What does the term &quot;whaling attacks&quot; refer to in the context of phishing?<br/>Attacks against highly placed officials or individuals with sizable assets</strong></blockquote></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

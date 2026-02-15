@@ -1,0 +1,726 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Domain 2: Incident Response, Business Continuity and Disaster Recovery Concepts</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="22f2bf6c-3445-80f2-8f29-c211385fc578" class="page sans"><header><h1 class="page-title" dir="auto"><strong>Domain 2: Incident Response, Business Continuity and Disaster Recovery Concepts</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="22f2bf6c-3445-80f2-941d-c53283812449" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="22f2bf6c-3445-803a-9f9f-ed0f075d71b1" class=""><strong>Incident Terminology</strong></h2></div><div style="display:contents" dir="auto"><p id="2302bf6c-3445-80a7-af6b-c2262624695a" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2302bf6c-3445-808b-a499-cb58d5a8e98e" class="bulleted-list"><li style="list-style-type:disc"><strong>Breach:  </strong>The loss of control, compromise, unauthorized disclosure, unauthorized acquisition, or any similar occurrence where: a person other than an authorized user accesses or potentially accesses personally identifiable information; or an authorized user accesses personally identifiable information for other than an authorized purpose. NIST SP 800-53 Rev. 5</li></ul></div><div style="display:contents" dir="auto"><ul id="2302bf6c-3445-8050-ac46-ea9682917264" class="bulleted-list"><li style="list-style-type:disc"><strong>Event: </strong>Any observable occurrence in a network or system. NIST SP 800-61 Rev 2</li></ul></div><div style="display:contents" dir="auto"><ul id="2302bf6c-3445-80f7-9409-c5aafa75a8fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Exploit: </strong>A particular attack. It is named this way because these attacks exploit system vulnerabilities.</li></ul></div><div style="display:contents" dir="auto"><ul id="2302bf6c-3445-80a8-b71e-d8b05368441c" class="bulleted-list"><li style="list-style-type:disc"><strong>Incident: </strong>An event that actually or potentially jeopardizes the confidentiality, integrity, or availability of an information system or the information the system processes, stores, or transmits.</li></ul></div><div style="display:contents" dir="auto"><ul id="2302bf6c-3445-8084-8689-d2f20aacea25" class="bulleted-list"><li style="list-style-type:disc"><strong>Intrusion: </strong>A security event, or combination of events, that constitutes a deliberate security incident in which an intruder gains, or attempts to gain, access to a system or system resource without authorization. IETF RFC 4949 Ver 2</li></ul></div><div style="display:contents" dir="auto"><ul id="2302bf6c-3445-80a1-ba19-de3a952c4586" class="bulleted-list"><li style="list-style-type:disc"><strong>Threat:  </strong>Any circumstance or event with the potential to adversely impact organizational operations (including mission, functions, image, or reputation), organizational assets, individuals, other organizations, or the nation through an information system via unauthorized access, destruction, disclosure, modification of information, and/or denial of service. NIST SP 800-30 Rev 1</li></ul></div><div style="display:contents" dir="auto"><ul id="2302bf6c-3445-8025-87c3-cb4166077cd4" class="bulleted-list"><li style="list-style-type:disc"><strong>Vulnerability: </strong>Weakness in an information system, system security procedures, internal controls, or implementation that could be exploited by a threat source. NIST SP 800-30 Rev 1</li></ul></div><div style="display:contents" dir="auto"><ul id="2302bf6c-3445-804d-8aea-f3172eabff0f" class="bulleted-list"><li style="list-style-type:disc"><strong>Zero Day: </strong>A previously unknown system vulnerability with the potential of exploitation without risk of detection or prevention because it does not, in general, fit recognized patterns, signatures, or methods.</li></ul></div><div style="display:contents" dir="auto"><p id="2302bf6c-3445-8031-98e5-c1176400cbab" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2302bf6c-3445-80c2-9c14-c1349d770880" class=""><strong>The Goal of Incident Response</strong></h2></div><div style="display:contents" dir="auto"><p id="2302bf6c-3445-8094-9b7f-fddb2850f49b" class="">The priority of any incident response is to protect life, health, and safety. When any decision related to priorities is to be made, always choose safety first.</p></div><div style="display:contents" dir="auto"><p id="2302bf6c-3445-803b-8d83-fdd44c0cf73f" class="">The primary goal of incident management is to be prepared. Preparation requires having a policy and a response plan that will lead the organization through the crisis. Some organizations use the term “crisis management” to describe this process.</p></div><div style="display:contents" dir="auto"><p id="2302bf6c-3445-80ea-bbc8-f23643e4c695" class="">An event is any measurable occurrence, usually harmless. If it threatens business operations, it&#x27;s called an incident. Organizations need an incident response plan to minimize impact and restore operations quickly. This planning is part of business continuity management (BCM).</p></div><div style="display:contents" dir="auto"><blockquote id="2302bf6c-3445-806a-9996-e15e88dda807" class=""><strong>What term is sometimes used interchangeably with &quot;incident management&quot;?<br/>Crisis Management</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2302bf6c-3445-80ad-87c1-f4a9d0e14405" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2302bf6c-3445-80e9-a4de-c76facddd936" class=""><strong>Business Continuity in the Workplace</strong></h2></div><div style="display:contents" dir="auto"><p id="2302bf6c-3445-80ab-9d04-c47b5a0a83c9" class="">Business continuity plans are usually digital, but relying solely on them can be risky during emergencies like power outages. To prepare, some organizations maintain a hard copy &quot;<em>red book</em>&quot; with critical procedures, stored off-site. It must be updated alongside the digital version to ensure consistency.</p></div><div style="display:contents" dir="auto"><blockquote id="2302bf6c-3445-807a-8bc2-ce21d8d6e177" class=""><strong>What is the purpose of a red book in the context of business continuity?<br/>To serve as a hard copy backup accessible outside the facility</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-80e5-afc1-dddaf06d0c82" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2322bf6c-3445-8010-bcd7-d10d0fa0fa48" class=""> Business Continuity Plan (BCP) </h2></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-8014-9551-ffa80463c5a2" class="">Business Continuity Planning (BCP) involves proactively preparing procedures to restore operations following a disaster or major disruption. Members from across the organization should participate in creating the BCP to ensure all systems, processes, and operations are accounted for in the plan. It is primarily a business function, but must align with technology to ensure the confidentiality, integrity, and availability (CIA) of information.</p></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-80c6-8615-cb2ff5d28e32" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-8056-be2d-c733e77ca62d" class="">Core Components:<br/>BCP Team List</p></div><div style="display:contents" dir="auto"><ul id="2322bf6c-3445-804c-aa2e-f1b2aa0e1993" class="bulleted-list"><li style="list-style-type:disc">Names of BCP team including multiple contact methods</li></ul></div><div style="display:contents" dir="auto"><ul id="2322bf6c-3445-80a6-9320-f4580b02f22b" class="bulleted-list"><li style="list-style-type:disc">Backup personnel included</li></ul></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-8004-86ff-f5043a5d8850" class="">Management Guidance</p></div><div style="display:contents" dir="auto"><ul id="2322bf6c-3445-80eb-ab42-d75ada192899" class="bulleted-list"><li style="list-style-type:disc">Clear authority designations for key managers</li></ul></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-80f2-8be4-f6ebff10498d" class="">Critical Contacts in supply chain</p></div><div style="display:contents" dir="auto"><ul id="2322bf6c-3445-8038-a282-c2cc4457f041" class="bulleted-list"><li style="list-style-type:disc">Vendors, customers, emergency services, and third-party partners</li></ul></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-80bf-9e2e-ffd45b6b8a17" class="">Plan Activation Criteria</p></div><div style="display:contents" dir="auto"><ul id="2322bf6c-3445-80de-8a26-d416a9a74885" class="bulleted-list"><li style="list-style-type:disc">Clear guidelines on when and how to initiate the BCP</li></ul></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-800c-8423-d8b949ace8ed" class="">Immediate Response Procedures</p></div><div style="display:contents" dir="auto"><ul id="2322bf6c-3445-80eb-b05e-f677e72a5cae" class="bulleted-list"><li style="list-style-type:disc">Safety and security protocols</li></ul></div><div style="display:contents" dir="auto"><ul id="2322bf6c-3445-803d-84ac-cda3e7f4b117" class="bulleted-list"><li style="list-style-type:disc">Fire suppression procedures</li></ul></div><div style="display:contents" dir="auto"><ul id="2322bf6c-3445-8052-9aa6-d2feb0553dde" class="bulleted-list"><li style="list-style-type:disc">Emergency agency notifications</li></ul></div><div style="display:contents" dir="auto"><ul id="2322bf6c-3445-804a-868a-e6fa48aa47f6" class="bulleted-list"><li style="list-style-type:disc">Communication Framework</li></ul></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-8084-ba45-dd23e190dde0" class="">Notification systems</p></div><div style="display:contents" dir="auto"><ul id="2322bf6c-3445-80d3-9cf2-fd5e4c7b0d20" class="bulleted-list"><li style="list-style-type:disc">Call trees to alert personnel and stakeholders</li></ul></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-80fe-aba8-c8c605e21f3c" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2322bf6c-3445-8025-a9c8-d9fadbfd1dac" class="">Business Continuity in Action</h2></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-803b-a557-ef4cab85a83a" class="">A fire destroyed the billing department overnight. No personnel were harmed. A Business Impact Analysis (BIA) conducted four months prior had identified billing as important but not immediately critical.</p></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-8031-81b4-c058275982a6" class="">Thanks to pre-planning:</p></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-800f-b08d-c984248fa6d2" class="">An alternate worksite was arranged in advance and will be operational within a week.</p></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-8068-bb6c-d52902d0dac8" class="">Customer service is handling billing inquiries in the meantime.</p></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-809b-8a0d-f393cb38cb08" class="">Billing staff will work from the temporary site until a permanent space is ready.</p></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-80ac-9ff7-d0809b83f2db" class="">The company’s cash reserves allow for a week-long delay in billing without financial stress. Operations and customer service remained unaffected, demonstrating a successful execution of the Business Continuity Plan (BCP).</p></div><div style="display:contents" dir="auto"><blockquote id="2322bf6c-3445-80cd-8524-d69fdebff6dd" class=""><strong>What is a key outcome of a Business Impact Analysis (BIA)?</strong><div style="display:contents" dir="auto"><p id="2322bf6c-3445-80f0-b7b2-c2f698b1337b" class=""><strong>Identification of functions and dependencies</strong></p></div></blockquote></div><div style="display:contents" dir="auto"><p id="2322bf6c-3445-8058-b6c5-de596d30c163" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2322bf6c-3445-806e-8a34-d927200bd062" class=""><strong>Components of the Incident Response Plan</strong></h2></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-80d8-84de-ca7d67a64408" class="">The incident response policy should reference a detailed, role-based incident response plan. This plan includes procedures, standards, and tools to guide incident handling and is regularly updated. It should align with the organization’s vision, mission, and strategy, and define the technical steps, techniques, and checklists for effective response.</p></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-800b-99f2-f10f539fc0cc" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-8049-91bc-fe2a04c44574" class=""><strong>Preparation</strong></p></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-802c-8e13-d682975988fe" class="bulleted-list"><li style="list-style-type:disc">Develop a policy approved by management.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-807d-a78a-d02febedd5d2" class="bulleted-list"><li style="list-style-type:disc">Identify critical data and systems and any single points of failure.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8035-bca3-dcac83ff4d60" class="bulleted-list"><li style="list-style-type:disc">Train staff on incident response.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8012-b9b5-f947ac2f67a8" class="bulleted-list"><li style="list-style-type:disc">Implement an incident response team.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8003-a87c-e06418cc0959" class="bulleted-list"><li style="list-style-type:disc">Practice incident identification (first response).</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80e5-9111-c1cea23a18da" class="bulleted-list"><li style="list-style-type:disc">Identify roles and responsibilities.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80da-8c70-f370b0dcf643" class="bulleted-list"><li style="list-style-type:disc">Plan the coordination of communication between stakeholders.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8030-aced-d791df6201b3" class="bulleted-list"><li style="list-style-type:disc">Consider the possibility that a primary method of communication may not be available.</li></ul></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-8081-93a3-da5e1b005876" class=""><strong>Detection and Analysis</strong></p></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80d6-a9be-eddfb8b08cf2" class="bulleted-list"><li style="list-style-type:disc">Monitor all possible attack vectors.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-805a-8ce9-c812831fee73" class="bulleted-list"><li style="list-style-type:disc">Analyze the incident using known data and threat intelligence.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-806f-bcce-cd3850f4fdea" class="bulleted-list"><li style="list-style-type:disc">Prioritize incident response.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8069-91b3-c773ee18a467" class="bulleted-list"><li style="list-style-type:disc">Standardize incident documentation.</li></ul></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-8048-b0fb-e0d594c5e0e4" class=""><strong>Containment</strong></p></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8000-b05d-eaae2b1c7059" class="bulleted-list"><li style="list-style-type:disc">Gather evidence.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80af-bd6c-ecf9833fe21f" class="bulleted-list"><li style="list-style-type:disc">Choose an appropriate containment strategy.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8047-99ed-e46b1483c1c9" class="bulleted-list"><li style="list-style-type:disc">Identify the attacker.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80a3-ae78-cb712c849a0c" class="bulleted-list"><li style="list-style-type:disc">Isolate the attack.</li></ul></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-8048-bca8-d4cc40de1976" class=""><strong>Post-Incident Activity</strong></p></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8037-bc5c-c477c16554fd" class="bulleted-list"><li style="list-style-type:disc">Identify evidence that may need to be retained.</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80b8-b762-f58a6bfc29dd" class="bulleted-list"><li style="list-style-type:disc">Document lessons learned.</li></ul></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-8051-88d7-effac5f216b1" class="">Conduct a retrospective of:</p></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80ac-a6b9-e4c6fb3a246c" class="bulleted-list"><li style="list-style-type:disc">Preparation</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80e2-97ce-edb49bdf68b4" class="bulleted-list"><li style="list-style-type:disc">Detection and Analysis</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-809a-b3fd-e2d16574cf7f" class="bulleted-list"><li style="list-style-type:disc">Containment, Eradication, and Recovery</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8027-b0b4-d9188bc86564" class="bulleted-list"><li style="list-style-type:disc">Post-incident Activity</li></ul></div><div style="display:contents" dir="auto"><blockquote id="2342bf6c-3445-80bd-8bbb-dc8eca088973" class=""><strong>What is the first phase in the components of an incident response plan?<br/>Preparation</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-807b-8ae6-c10e6d756d54" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2342bf6c-3445-809c-972c-d7672de3bb17" class=""><strong>The Goal of Disaster Recovery</strong></h2></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-803d-9e8f-d3aacff46820" class="">Disaster recovery planning begins where business continuity (BC) ends.<br/>While BC focuses on keeping critical business functions running during a disruption, disaster recovery (DR) focuses on restoring IT and communication systems after the disruption.</p></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-8001-85a2-f22b7cf054c1" class="">The disaster recovery plan (DRP) guides emergency teams in restoring systems to their last known reliable state.<br/>Although business functions can sometimes be restored without IT, IT recovery is usually essential for full business recovery.</p></div><div style="display:contents" dir="auto"><blockquote id="2342bf6c-3445-80ba-89b2-f4ef3a6e0fad" class=""><strong>What is the primary distinction between business continuity planning (BCP) and disaster recovery planning (DRP)?<br/>DRP is about restoring IT, while BCP focuses on business operations</strong></blockquote></div><div style="display:contents" dir="auto"><blockquote id="2342bf6c-3445-80c5-834a-e75500051655" class=""><strong>Which of the following is very likely to be used in a disaster recovery (DR) effort?<br/>Data backups</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-807b-bb68-f1be5b2b5092" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2342bf6c-3445-8073-8d62-db7dbf997b54" class=""><strong>Components of a Disaster Recovery Plan</strong></h2></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-801a-8f7f-d48fadaad3c9" class="">Depending on the organization&#x27;s size and the number of people involved in the disaster recovery planning (DRP), multiple plan documents may be created for different audiences.</p></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-801c-a12b-c9d28f6a0094" class="">These may include:</p></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80b4-9c7e-c4c60c1c695f" class="bulleted-list"><li style="list-style-type:disc">An executive summary with a high-level overview of the plan</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80c2-95c2-fb1105b9efc4" class="bulleted-list"><li style="list-style-type:disc">Department-specific recovery plans</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80fc-883f-d9b60579fd37" class="bulleted-list"><li style="list-style-type:disc">Technical guides for IT personnel to manage backup systems and restore services</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80b2-aacf-c3a6788bac27" class="bulleted-list"><li style="list-style-type:disc">Full copies of the plan for critical disaster recovery team members</li></ul></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-800e-9f60-f7d59f3cc9d1" class="">Each group receives documents tailored to their role:</p></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8037-b784-e796aa23c13b" class="bulleted-list"><li style="list-style-type:disc">disaster recovery planning (DRP) team members get checklists to follow during a disaster</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-8060-ae40-fa39d2647fca" class="bulleted-list"><li style="list-style-type:disc">IT staff use technical guides to activate alternate sites</li></ul></div><div style="display:contents" dir="auto"><ul id="2342bf6c-3445-80ef-a196-d6205e90b3ca" class="bulleted-list"><li style="list-style-type:disc">Managers and PR teams use simplified high-level documents to communicate clearly without interrupting team members who are busy working on the recovery.</li></ul></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-8031-a1b4-c9d14d69eaaf" class="">
+</p></div><div style="display:contents" dir="auto"><blockquote id="2342bf6c-3445-80d8-b94a-ed00498164f9" class=""><strong>What is the purpose of the Executive Summary in a Disaster Recovery Plan?<br/>To offer a high-level overview of the plan</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-8053-9423-cee7bc1adcf8" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2342bf6c-3445-803a-9fbc-cf5f1ba9c34f" class=""><strong>The Goal of Business Continuity</strong></h2></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-80f0-b3a4-c8a22ae068c9" class="">Business continuity ensures that an organization’s critical functions can continue, even at reduced capacity, during disruptions such as cyberattacks, system failures, or natural disasters. While minor incidents may require only basic response, major disruptions need a full business continuity approach.</p></div><div style="display:contents" dir="auto"><p id="2342bf6c-3445-8061-96d4-cee75b2b3d59" class="">Business continuity focuses on essential services, enabling them to operate until normal operations are restored. It involves planning, preparation, response, and recovery—but not full restoration. Successful continuity planning requires strong support from executive management and a commitment of resources.</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,741 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Domain 1: Security Principles</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2212bf6c-3445-8066-829e-dc40288d6d05" class="page sans"><header><h1 class="page-title" dir="auto"><a href="https://isc2.obrizum.io/org/cc/catalogue/c2aae387-ba85-4c0e-b2e0-cbb83402ef86">Domain 1: Security Principles</a></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h2 id="22c2bf6c-3445-80d6-9775-c74e321c6e15" class="">CIA(Confidentiality, Integrity and Availability)</h2></div><div style="display:contents" dir="auto"><ul id="2222bf6c-3445-8094-a188-ef1f5a0048fe" class="bulleted-list"><li style="list-style-type:disc">Confidentiality : authorized access to info, protect from improper disclosure<br/></li></ul></div><div style="display:contents" dir="auto"><ul id="2222bf6c-3445-8066-ad6b-d6e7dd24a860" class="bulleted-list"><li style="list-style-type:disc">Integrity :info is complete, accurate and  protected from corruption </li></ul></div><div style="display:contents" dir="auto"><p id="2232bf6c-3445-8054-87f7-ff76bcd5773d" class="">       info recorded, used and maintained in a way it ensures accuracy, internal consistency and                     usefulness for stated purpose.</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80d3-a962-ee8bbfe15726" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="2222bf6c-3445-80d5-b747-f319ff61a384" class="bulleted-list"><li style="list-style-type:disc">Availability : the systems and data accessible when users need</li></ul></div><div style="display:contents" dir="auto"><p id="2222bf6c-3445-80cd-90d7-e1cac0b3e683" class=""><strong>DAD &gt; Disclosure Alteration Destruction</strong></p></div><div style="display:contents" dir="auto"><p id="2222bf6c-3445-80fe-bab6-d0bacf5bbbd7" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2222bf6c-3445-804b-a74b-f15e20c9298c" class="">Privacy</h2></div><div style="display:contents" dir="auto"><p id="2222bf6c-3445-80c7-9dca-f40d272b4f0d" class="">Privacy is the right of an individual to control the distribution of information about themselves.</p></div><div style="display:contents" dir="auto"><p id="2222bf6c-3445-80a3-b6eb-e31e3360f0c2" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2222bf6c-3445-8047-91d4-d28ed3b5b7fc" class="">GDPR(General Data Protection Regulation)</h2></div><div style="display:contents" dir="auto"><p id="2222bf6c-3445-8081-9fbb-fe9830d6b51c" class="">European Union’s General Data Protection Regulation (GDPR)</p></div><div style="display:contents" dir="auto"><p id="2222bf6c-3445-80e1-954d-c8ed9647b96a" class="">These laws, including national- and state-level laws, dictate that any entity any wherein the world handling the private data of people in a particular legal jurisdiction must abide by its privacy requirements. Itis important to have an understanding of how these laws apply to your organization.<strong><br/>In 2016, the European Union passed comprehensive legislation that addresses personal privacy, deeming it an individual human right.</strong></p></div><div style="display:contents" dir="auto"><p id="2222bf6c-3445-80c3-ba53-dc90948861b1" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2222bf6c-3445-809c-bd79-dccdb60f4f33" class="">Risk Management</h2></div><div style="display:contents" dir="auto"><p id="2222bf6c-3445-80f6-8add-c76d8f525a3f" class="">Risks can be from cyber attacks such as malware, social engineering or denial of service attacks or from other situations that affect our environment such as fire, violent crime or natural disasters with well designed risk management technologies. We can recognize vulnerabilities and threats and calculate the likelihood and the potential impact of each threat.</p></div><div style="display:contents" dir="auto"><p id="2222bf6c-3445-80c2-94cf-e0c86934e21b" class="">The level of cyber security required depends on the level of risk. The entity is willing to accept that is the potential consequences of what&#x27;s going on in our environment. Once we evaluate this risk, then we will implement security controls to mitigate the risk to the level that we find acceptable </p></div><div style="display:contents" dir="auto"><h2 id="2222bf6c-3445-801c-9c83-ceada92c1e4a" class=""><strong>Threats, Vulnerabilities, and Likelihood</strong></h2></div><div style="display:contents" dir="auto"><p id="2282bf6c-3445-80c0-bf83-ef53880a388a" class="">Threat&gt; The approach taken by the threat is the threat vector</p></div><div style="display:contents" dir="auto"><p id="2282bf6c-3445-80c6-b2e0-ee35254a5a69" class="">Vulnerability&gt; the weakness that the threat exploits</p></div><div style="display:contents" dir="auto"><p id="2222bf6c-3445-80d8-b599-e22a031f268c" class="">If a risk is identified beforehand then it can be mitigated</p></div><div style="display:contents" dir="auto"><blockquote id="2282bf6c-3445-80fc-90a9-eed6258f72b7" class="">How do companies that offer identity theft insurance manage their own financial risk?<div style="display:contents" dir="auto"><p id="2282bf6c-3445-80ab-9cdc-e6d6df6b5a23" class=""><strong>By calculating premium payments against potential payouts</strong></p></div></blockquote></div><div style="display:contents" dir="auto"><p id="2282bf6c-3445-8034-b243-eea0e765c446" class="">Companies offering identity theft insurance engage in financial risk management by calculating that premium payments or subscription payments will exceed the payouts they may have to make in the event of a claim.</p></div><div style="display:contents" dir="auto"><p id="2282bf6c-3445-80bb-906f-dfc0c1777e5e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2282bf6c-3445-80eb-9aa1-f71682c84a93" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2282bf6c-3445-801e-a1f5-e558edc9f277" class=""><strong>Protecting Information</strong></h2></div><div style="display:contents" dir="auto"><p id="2282bf6c-3445-8090-930e-e05fb30e8809" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2282bf6c-3445-800b-beae-e78d5270468f" class=""><strong>Personally Identifiable Information (PII)</strong> &gt; Personally Identifiable Information (PII) is the term used to describe information that, when combined with other pieces of data, significantly narrows the possibility of association with more individuals.</p></div><div style="display:contents" dir="auto"><p id="2282bf6c-3445-802c-ab6e-f32a8e69f027" class="">A collection of data can be PII but individual elements may not be PII</p></div><div style="display:contents" dir="auto"><blockquote id="2292bf6c-3445-804e-b8c7-d6bb20ecc40e" class="">What term is used to refer to information that, when combined with other pieces of data, significantly narrows the possibility of association with more individuals?<div style="display:contents" dir="auto"><p id="2292bf6c-3445-8089-8ff0-e44852c09a4c" class=""><strong>Personally Identifiable Information (PII)</strong></p></div></blockquote></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-8041-bdd6-e0d1eaa30970" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2292bf6c-3445-80ab-a031-f753009359eb" class=""><strong>Making Connections</strong></h2></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-8021-b26d-cc8fb1e6f163" class="">a comprehensive risk assessment of technical human and environmental threats must be completed, then appropriate mitigation options must be put in place to protect the security and integrity of an organization&#x27;s information.</p></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-803c-8d37-d3e98035f1ef" class="">Examples &gt;&gt;Sharing password, leaving the workstation unattended so that other people may use it for downloading unauthorized files like games, natural disasters like a long power cut causing mechanical failures if not maintained properly or improper fire suppression methods can affect the CIA triad by irreparably damaging or destroying both digital and analog information. </p></div><div style="display:contents" dir="auto"><blockquote id="2292bf6c-3445-80f3-97dd-d9249ac0df67" class=""><strong>What potential risk can occur when a remote worker&#x27;s laptop is left unattended or unlocked?<br/>Accidental introduction of unauthorized software with malware (eg: games)</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-807a-9d76-fe3a8f645446" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2292bf6c-3445-8095-8e2c-f898d3cd8a7c" class=""><strong>Privacy in the Working Environment</strong></h2></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-802d-ac31-e03e7131d6d6" class="">
+</p></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80a6-abe2-ecd987d9adf5" class="">Privacy is a major component of information security. Once we know how private the information is, we know what appropriate controls can be implemented. A number of standards, policies and procedures govern privacy in the working environment, like HIPPA in USA and GDPR in EU. When doing business in other countries, we must be aware of their privacy standards and regulations and act accordingly.</p></div><div style="display:contents" dir="auto"><h2 id="2292bf6c-3445-80b7-9bd2-e998c989f5d1" class="">Risk Management Terminology</h2></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80d1-baaf-faf70900d0b8" class="">● An <strong>asset</strong> is something in need of protection.</p></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-802e-bc68-d2d6f4b434ba" class="">● A <strong>vulnerability </strong>is a gap or weakness in those protection efforts.</p></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80ef-9d80-ca137c9c2fb3" class="">● A <strong>threat </strong>is something or someone that aims to exploit a vulnerability to thwart protection efforts.</p></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80a1-a564-ebe58bfa473c" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2292bf6c-3445-8080-9b3b-feff4d1aa302" class="">Decision Making Based on Risk Priorities</h2></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80b5-b830-c3db57594ce1" class="">When making decisions based on risk priorities, organizations must evaluate the likelihood and impact of the risk as well as their tolerance for different sorts of risk.</p></div><div style="display:contents" dir="auto"><blockquote id="2292bf6c-3445-8038-9fa8-d8c8c6201a3e" class=""><strong>Who is responsible for determining risk tolerance in an organization?<br/>Executive management and board of directors </strong>(chose all employees as the answer and that was wrong)</blockquote></div><div style="display:contents" dir="auto"><blockquote id="2292bf6c-3445-8079-84e2-c05d4f25bcbb" class=""><strong>What action is suggested to mitigate the risk associated with a threat?<br/>Evaluate the likelihood of the event and take appropriate actions to mitigate the risk</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80ed-b199-f6613810da89" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2292bf6c-3445-800d-b806-fe8373a39ff1" class="">Importance of Governance Elements</h2></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80ee-97f3-dac150b82da6" class="">HIPPA &gt; Health care insurance, Portability and Accountability Act of 1996 in USA </p></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-8038-9b33-fcf8bf34c874" class="">GDPR in EU within territorial boundaries regardless of citizenship.</p></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-805f-b3df-cdaccc4979c4" class="">Fortunately, there are published frameworks or standards to guide the organizational policies that support the compliance effort. Many departments or work groups within the organization implement procedures that detail how they complete day to day tasks while remaining compliant. Among these groups is the <strong>International Organization for Standardization ISO</strong> ,  ISO is an international standards body. One of the standards that is  published is how to destroy data in a secure fashion.</p></div><div style="display:contents" dir="auto"><blockquote id="2292bf6c-3445-8016-a47a-d5554b7452df" class="">Which regulation grants data protection and control to individuals within the EU, regardless of citizenship?<div style="display:contents" dir="auto"><p id="2292bf6c-3445-807d-9ecb-dcf7f6817987" class=""><strong>General Data Protection Regulation (GDPR)</strong></p></div></blockquote></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-806d-921d-ebdf72b47cac" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2292bf6c-3445-8098-a504-cc3735743c75" class=""><strong>Risk Identification</strong></h2></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80b1-923a-f43ba7649544" class="">Risk identification in cybersecurity is an ongoing process, not a one-time event. It involves:</p></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80e1-b2e7-df4f9c5d62a0" class="">• Continuously identifying, characterizing, and estimating risks to the organization<br/>• Analyzing the organization&#x27;s unique situation and plans<br/>• Looking beyond obvious dangers to find potential problems</p></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80f9-bdd3-e8b7a8aa50e3" class="">Key takeaways:<br/>• Clear risk communication is essential<br/>• Risk identification is everyone&#x27;s responsibility<br/>• Security professionals typically focus on system-level risk assessment<br/>• In smaller organizations, security professionals may help develop missing risk management plans</p></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80b4-b964-ef289e50944f" class="">
+</p></div><div style="display:contents" dir="auto"><blockquote id="2292bf6c-3445-80b7-a3e1-c1cf87050a2a" class=""><strong>What role might security professionals play in risk assessment at a system level?<br/>Assisting in risk assessment at a system level</strong></blockquote></div><div style="display:contents" dir="auto"><blockquote id="2292bf6c-3445-801e-9d0f-eb7e4fc8259c" class=""><strong>Who is responsible for identifying risks within an organization?<br/>Employees at all levels of the organization</strong></blockquote></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80b8-ab97-e6ba637973e0" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="2292bf6c-3445-8018-ba5d-e8e5eaac59e3" class=""><strong>Risk Priorities</strong></h2></div><div style="display:contents" dir="auto"><p id="2292bf6c-3445-80d7-8ea5-caaaf6837a9e" class="">Identified risks needs to be prioritized and analyzed core through qualitative and/or quantitative risk analysis. This is necessary to determine the root cause and narrow down apparent risks and core risks. Security professionals work with their teams to conduct both qualitative and quantitative analysis. </p></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-80d7-9d24-cba40f0c23b2" class="">Understanding an organization’s mission and supporting functions helps place risks in context and prioritize them effectively. Management typically guides how risk assessment findings should inform actions. A useful tool for prioritizing risks is the risk matrix, which evaluates risks based on likelihood and impact, providing a common framework for decision-making. For instance, high likelihood and high impact risks are given high priority, while low likelihood and low impact risks are low priority. Final priorities may also consider business goals, mitigation costs, and potential losses.</p></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-803a-9586-c572c8f9698d" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="22c2bf6c-3445-8097-914f-ff2005748d67" class="image"><a href="Domain%201%20Security%20Principles/image.png"><img style="width:336px" src="Domain%201%20Security%20Principles/image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-80c3-b798-f6e08008dcd5" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="22c2bf6c-3445-8030-a298-e7440bd76bad" class=""><strong>Theoretical Example: Code of Ethics</strong></h2></div><div style="display:contents" dir="auto"><ol type="1" id="22c2bf6c-3445-803f-9979-e62b927d079c" class="numbered-list" start="1"><li><strong>Retinal Scanner Misuse</strong>: An organization used retinal scanners to gather sensitive biometric data, including gender and pregnancy status, without candidates’ knowledge. It then used this data to discriminate against female applicants, violating ethical standards requiring <strong>information security professionals to act honestly, justly, legally, and responsibly.</strong></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="22c2bf6c-3445-8067-9abc-d4f355aefb8d" class="numbered-list" start="2"><li><strong>Misuse of Monitoring Authority</strong>: A network administrator reported a user for violating acceptable use policy. Although the user did violate the policy, the administrator wasn’t authorized to monitor the user and refused to disclose how they obtained the information. A personal conflict was suspected, suggesting the administrator abused their privileges to settle a grievance.<strong> This breach of trust was more serious than the user’s policy violation, potentially exposing the organization to legal risks, such as a hostile work environment claim.</strong></li></ol></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-8030-bb99-d89c2f55b215" class=""><strong>In both cases, ethical codes were violated by misusing access and authority, emphasizing the need for integrity, fairness, and proper use of cybersecurity tools.</strong></p></div><div style="display:contents" dir="auto"><blockquote id="22c2bf6c-3445-80c3-ac69-f5e5301b6898" class=""><strong>According to the code of ethics, what are information security professionals expected to uphold?<br/>Be honorable, honest, just and responsible within legal conduct</strong></blockquote></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-806e-b786-c81b17196932" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="22c2bf6c-3445-808d-929b-c7df0ef98528" class=""><strong>Authentication</strong></h2></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-8006-8848-ce6432fa114b" class="">Authentication is a <strong>process to prove the identity of the requestor</strong>. There are three common methods of authentication:<br/>● Something you know: Passwords or passphrases<br/>● Something you have: Tokens, memory cards, smart cards<br/>● Something you are: Biometrics, measurable characteristics</p></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-805c-abeb-f4974599a102" class="">
+</p></div><div style="display:contents" dir="auto"><blockquote id="22c2bf6c-3445-8084-bfe6-f05793141b7d" class="">Multifactor authentication involves using two or more instances of different authentication factors.<br/>Which of the following are considered a widely accepted factor for authentication?<br/><strong>Something you have<br/>Something you know<br/>Something you are<br/>Somewhere you are<br/>(this answer i chose all options and it was wrong)</strong></blockquote></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-808e-85eb-fabeeb1d8179" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="22c2bf6c-3445-803e-98d2-e104e40973e1" class=""><strong>Professional Code of Conduct</strong></h2></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-804a-a1f5-f1546d5bd112" class=""><strong>ISC2 Code of Ethics Preamble</strong></p></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-803d-a512-dad01ce297bc" class="">The Preamble outlines the ISC2 Code of Ethics purpose and intent.</p></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-8078-b3e0-d49ea4f57c1d" class="">● Society&#x27;s welfare, common good, and our professional duties require adherence to the highest ethical standards.</p></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-805d-8ac6-c039552f8896" class="">● Strict Code adherence is required for certification</p></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-8040-b782-c41432031f6f" class=""><strong>ISC2 Code of Ethics Canons</strong></p></div><div style="display:contents" dir="auto"><p id="22c2bf6c-3445-80a6-bf28-c133291c20e0" class="">The Canons represent core beliefs shared by ISC2 members. Cybersecurity professionals who are ISC2 members must:<br/>● Protect society, common good, public trust, and infrastructure.<br/>● Act honorably, honestly, justly, responsibly, and legally.<br/>● Provide diligent and competent service to principles.<br/>● Advance and protect the profession.</p></div><div style="display:contents" dir="auto"><blockquote id="22c2bf6c-3445-80fb-932a-ed120a45c7a9" class=""><strong>While taking the certification exam for this certification, you notice another candidate for the certification cheating. What should you do?<br/>Report the candidate to ISC2</strong></blockquote></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80b6-8f29-e7d225b7cbab" class="">
+</p></div><div style="display:contents" dir="auto"><blockquote id="22e2bf6c-3445-8087-970f-f95f55023285" class=""><strong>What is the primary purpose of the ISC2 Code of Ethics?<br/>Ensuring the safety and welfare of society and the common good</strong></blockquote></div><div style="display:contents" dir="auto"><h2 id="22e2bf6c-3445-805e-99bb-ce03f0a9c0d1" class=""><strong>Governance Elements</strong></h2></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-8008-a896-e10c3fb36d61" class="">When leaders and management implement the systems and structures that organizations use to achieve their goals, they follow laws and regulations created by governments to enact public policy. These laws and regulations guide the development of standards, which form policies, which in turn lead to specific procedures.</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80e5-9d68-e01548e25718" class="">Procedures are the detailed steps to complete a task that support departmental or organizational policies.</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-8021-af4c-fd22f525d017" class="">● Policies are established by organizational governance, such as executive management, to provide guidance across all activities and ensure the organization adheres to industry standards and regulations.</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80f9-9986-d83778061815" class="">● Standards are frameworks used by governance teams to develop and implement policies and procedures that support regulatory compliance.</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-807d-b8d3-e1399accbbc9" class="">● Regulations are typically issued as laws by government bodies (distinct from governance) and often carry financial penalties for non-compliance.</p></div><div style="display:contents" dir="ltr"><figure id="22e2bf6c-3445-80ec-aa2f-d3ec06a832f7" class="image"><a href="Domain%201%20Security%20Principles/image%201.png"><img style="width:384px" src="Domain%201%20Security%20Principles/image%201.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-8026-800e-cd3262d47526" class="">
+</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-805e-aa2c-efedd58f647c" class="">
+</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80ff-84d6-fc9ef3e6054c" class=""><em><strong>Regulations</strong></em></p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-8009-af7f-f624859797c1" class="">Regulations and associated fines and penalties can be imposed by governments at the national, regional, or local level. Because regulations and laws can be imposed and enforced differently in different parts of the world, here are a few examples to connect the concepts to actual regulations</p></div><div style="display:contents" dir="auto"><ul id="22e2bf6c-3445-8083-904e-c2c273560923" class="bulleted-list"><li style="list-style-type:disc">The Health Insurance Portability and Accountability Act (HIPAA) of 1996 is an example of a law that governs the use of protected health information (PHI) in the United States.</li></ul></div><div style="display:contents" dir="auto"><ul id="22e2bf6c-3445-8017-a8c7-d93d1d4748a0" class="bulleted-list"><li style="list-style-type:disc">The General Data Protection Regulation (GDPR) was enacted by the European Union (EU) to control use of Personally Identifiable Information (PII) of its citizens and those in the EU</li></ul></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80dc-912c-ec0b9e7fa63e" class="">Finally, it is common to be subject to regulation on several levels. Multinational organizations are subject to regulations in more than one nation in addition to multiple regions and municipalities. Organizations need to consider the regulations that apply to their business at all levels—national, regional, and local—and ensure they are compliant with the most restrictive regulation.</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-8018-a255-d3a4cadc5534" class="">
+</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80ed-b9ac-d80625c7a1aa" class=""><em><strong>Standards</strong></em></p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-8034-8dad-f8a01fad691a" class="">Organizations use various standards in their information security programs for compliance and guidance. These standards ensure policies align with regulations and best practices.</p></div><div style="display:contents" dir="auto"><ul id="22e2bf6c-3445-8096-8bbb-f15fbfc0f76d" class="bulleted-list"><li style="list-style-type:disc"><strong>ISO (International Organization for Standardization)</strong> publishes global standards on information systems, security, and encryption, with expert input. ISO standards must be purchased online.</li></ul></div><div style="display:contents" dir="auto"><ul id="22e2bf6c-3445-8040-ae01-f611695f506d" class="bulleted-list"><li style="list-style-type:disc"><strong>NIST (National Institute of Standards and Technology)</strong>, a U.S. government agency, provides free, widely respected IT and cybersecurity standards, often mandatory for federal agencies.</li></ul></div><div style="display:contents" dir="auto"><ul id="22e2bf6c-3445-8047-b751-da2e1804f1ed" class="bulleted-list"><li style="list-style-type:disc"><strong>IETF (Internet Engineering Task Force)</strong> creates communication protocol standards that enable global computer connectivity, regardless of language differences.</li></ul></div><div style="display:contents" dir="auto"><ul id="22e2bf6c-3445-80f6-87f4-c811353b04d3" class="bulleted-list"><li style="list-style-type:disc"><strong>IEEE (Institute of Electrical and Electronics Engineers)</strong> sets standards in telecommunications, computer engineering, and related fields.</li></ul></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80d2-931e-c5ac71a8e67c" class="">These standards ensure secure, compatible, and effective IT systems worldwide.</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80cd-9605-d21aa37b116d" class="">
+</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80b4-ab84-e70b214e92ac" class=""><em><strong>Policies</strong></em></p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-8005-afa0-f16d1b4f55fb" class="">Policies are broad, high-level statements informed by laws and regulations that guide an organization&#x27;s direction, priorities, and decision-making. Governance policies ensure compliance and shape other policies across departments like HR, finance, and security.</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80c8-b62b-cf59aa61b07b" class="">Senior executives use these policies to steer the organization toward its goals. When compliance is required by law or contracts, specific high-level policies are developed and assessed for effectiveness.</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80ef-98eb-dca3c66290af" class="">To implement policies, they must be translated into detailed procedures that provide step-by-step instructions for action.</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80a1-9ab7-daabb60ef36e" class="">
+</p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80c3-b619-d90060e562d6" class=""><em><strong>Procedures</strong></em></p></div><div style="display:contents" dir="auto"><p id="22e2bf6c-3445-80cc-bb40-defd98b7f6b2" class="">Procedures are detailed, repeatable steps for completing specific tasks. They include necessary data, decision criteria, and success metrics. Procedures may cover routine or one-time actions and must be well-documented and taught to staff for effective implementation.</p></div><div style="display:contents" dir="auto"><p id="22f2bf6c-3445-800c-aeba-fe1ff5309f8b" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="22f2bf6c-3445-8044-b288-e64b6493c185" class="">Multifactor authentication</h3></div><div style="display:contents" dir="auto"><ul id="22f2bf6c-3445-80cf-ae73-dc6f7b5d5aeb" class="bulleted-list"><li style="list-style-type:disc">something that we know(PIN, Password)</li></ul></div><div style="display:contents" dir="auto"><ul id="22f2bf6c-3445-80d9-881f-d79266164c3e" class="bulleted-list"><li style="list-style-type:disc">something that we have(ATM card)</li></ul></div><div style="display:contents" dir="auto"><ul id="22f2bf6c-3445-80ca-9e19-c64410b88ce2" class="bulleted-list"><li style="list-style-type:disc">something that we have(Facial recognition, Iris scan)</li></ul></div><div style="display:contents" dir="auto"><blockquote id="22f2bf6c-3445-80e6-854d-cc96b7c044ec" class=""><strong>What type of authentication process is used at the bank with an ATM card?<br/>Two-factor authentication</strong></blockquote></div><div style="display:contents" dir="auto"><p id="22f2bf6c-3445-80ca-8560-c51f1e856d1b" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="22f2bf6c-3445-80cb-9f0d-e639ea458810" class=""><strong>Non-repudiation</strong></h2></div><div style="display:contents" dir="auto"><p id="22f2bf6c-3445-80ba-89d5-f9b0ceaa3b4b" class="">Non-repudiation is a legal term defined as the protection against an individual falsely denying having performed a particular action.</p></div><div style="display:contents" dir="auto"><p id="22f2bf6c-3445-8054-8ab4-c16b5318d432" class="">Non-repudiation ensures individuals cannot deny actions they performed, such as sending messages or making transactions. It is crucial in digital environments to prevent impersonation and build trust by holding users accountable for their actions.</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

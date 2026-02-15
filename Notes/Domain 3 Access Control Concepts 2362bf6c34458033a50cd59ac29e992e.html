@@ -1,0 +1,727 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Domain 3: Access Control Concepts</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2362bf6c-3445-8033-a50c-d59ac29e992e" class="page sans"><header><h1 class="page-title" dir="auto"><a href="https://isc2.obrizum.io/org/cc/catalogue/6a0a7440-105c-4385-8653-6ce938f7f76a">Domain 3: Access Control Concepts</a></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h2 id="2362bf6c-3445-80ac-85e7-c5724867ee0b" class=""><strong>Security Controls</strong></h2></div><div style="display:contents" dir="auto"><p id="2362bf6c-3445-80c6-ad3e-fc9772aa1c87" class="">A control is a safeguard or countermeasure to preserve the <strong>Confidentiality</strong>, <strong>Integrity</strong>, and <strong>Availability</strong> of data—collectively known as the <strong>CIA Triad</strong>.</p></div><div style="display:contents" dir="auto"><p id="2362bf6c-3445-80bf-bbaf-d3c4e0c91e2f" class="">Access control limits which subjects (users or systems) can access which objects (data or resources) based on defined rules.</p></div><div style="display:contents" dir="auto"><p id="2362bf6c-3445-80b9-b6b2-c5f08715a086" class="">A common example is a <strong>firewall</strong>, which acts as a control to block unauthorized external access to a network and prevent sensitive internal data from leaving the system.</p></div><div style="display:contents" dir="auto"><blockquote id="2362bf6c-3445-80eb-b14a-c7fc1dc9b518" class=""><strong>Which of the following is an example of security control?<br/>Firewall</strong></blockquote></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-8011-9430-c7050f93da67" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23a2bf6c-3445-8020-b073-c078a978b332" class=""><strong>Controls Overview</strong></h2></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-8076-a712-ca3b3b579adb" class="">Access control is about granting the appropriate level of access to authorized personnel and processes while denying access to unauthorized functions or individuals</p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-8008-a38c-ff77e3028517" class="">.</p></div><div style="display:contents" dir="ltr"><figure id="23a2bf6c-3445-8016-800d-cf737c7dd414" class="image"><a href="Domain%203%20Access%20Control%20Concepts/image.png"><img style="width:336px" src="Domain%203%20Access%20Control%20Concepts/image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-80e1-b59f-ecf16029e77f" class="">
+</p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-80c5-90d6-d4625b6e0742" class=""><strong>Subjects</strong></p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-80b4-9d3a-e220c0fdd356" class="">A <strong>subject</strong> is any <em><strong>active </strong></em>entity that initiates a request to access an asset. This can be a user, process, program, client, server, or device like a workstation or smartphone.</p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-807d-9360-eabec689da95" class="">Key points about a subject:</p></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-8008-9668-e16791f1a0a6" class="bulleted-list"><li style="list-style-type:disc">It actively requests access to a resource or service.</li></ul></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-80cd-b1dd-c28dc053b775" class="bulleted-list"><li style="list-style-type:disc">It includes users, software, and hardware with the ability to initiate actions.</li></ul></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-80b6-8161-e0cb7b50b600" class="bulleted-list"><li style="list-style-type:disc">It interacts with <strong>objects</strong> (resources) by requesting services.</li></ul></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-8086-8357-c6ad356cc851" class="bulleted-list"><li style="list-style-type:disc">It must have appropriate permissions or clearance to access the requested resource.</li></ul></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-806c-b062-c0d0050032bd" class=""><strong>Objects</strong></p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-8064-a95d-df1aa6e40ad0" class="">By definition, an <strong>object</strong> is anything a <strong>subject</strong> tries to access—such as a device, user, program, server, or process.</p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-80fa-99e2-d2b83c7abcb4" class="">Unlike subjects, objects are <strong>passive</strong>; they do not initiate actions but respond to service requests. If a request is incorrect, the object’s response may not meet the subject’s intent.</p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-8096-a2c8-fb59323a126d" class="">Objects do <strong>not</strong> contain their own access control logic. Instead, they rely on external systems, like identity and access management, to protect them from unauthorized access</p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-8063-b3ed-c4ba2f43bfe0" class="">An <strong>object</strong> has an <strong>owner</strong>, who determines who or what can access it. Access rules are often defined in a <strong>rule base</strong> or an <strong>access control list </strong>.</p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-8020-8fd2-f4db04b65022" class="">Key points about an object:</p></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-80d1-986b-d010a64c6c5b" class="bulleted-list"><li style="list-style-type:disc">It can be a building, computer, file, database, printer, server, memory block, I/O port, person, software task, thread, or process.</li></ul></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-80a5-8999-d5a77018096d" class="bulleted-list"><li style="list-style-type:disc">It provides a service to a user.</li></ul></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-8046-9669-f946115bc429" class="bulleted-list"><li style="list-style-type:disc">It is <strong>passive</strong> and responds only when a request is made.</li></ul></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-802d-b2a8-d96263206571" class="bulleted-list"><li style="list-style-type:disc">It may have a <strong>classification level</strong> to define sensitivity.</li></ul></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-805b-a4d1-c3bb1a54ed86" class=""><strong>Rules</strong></p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-802f-b601-e12b97930588" class="">An <strong>access rule</strong> is an instruction used to allow or deny a subject access to an object by comparing the subject’s validated identity against an <strong>access control list (ACL)</strong>.</p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-8036-a857-eb08dea726e5" class="">For example, in a firewall, rules determine which network traffic is allowed. By default, firewalls block all traffic. A rule might permit traffic from the inside network to the outside network—allowing the subject (inside network) access to the object (outside network). Similarly, when a user tries to access a file, access rules check what level of access is appropriate based on defined attributes.</p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-800e-aaa6-e7e61921c721" class="">An access rule can:</p></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-80dc-8247-d0cc53d779f3" class="bulleted-list"><li style="list-style-type:disc">Compare multiple attributes to determine access</li></ul></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-80fe-be08-f366356a9f44" class="bulleted-list"><li style="list-style-type:disc">Allow or deny access to an object</li></ul></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-80c1-acfc-c6db1163e0d4" class="bulleted-list"><li style="list-style-type:disc">Define the level of access (read, write, execute, etc.)</li></ul></div><div style="display:contents" dir="auto"><ul id="23a2bf6c-3445-80bf-9e58-cfe1b6ebbced" class="bulleted-list"><li style="list-style-type:disc">Apply time-based access restrictions</li></ul></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-80b4-9906-e8e88e927898" class="">These rules help enforce access control policies across systems and resources.</p></div><div style="display:contents" dir="auto"><p id="23a2bf6c-3445-80d8-95be-d61530edd20a" class="">
+</p></div><div style="display:contents" dir="auto"><blockquote id="23a2bf6c-3445-80ba-8940-dbb310cbb548" class=""><strong>What is the definition of an object in the context of access controls?<br/>Something that contains its own access control logic(wrong answer)</strong></blockquote></div><div style="display:contents" dir="auto"><blockquote id="23a2bf6c-3445-8071-a90e-f9e141de8a5d" class="">Derrick logs on to a system to read a file.  In this example, Derrick is the ______. <strong>Subject</strong></blockquote></div><div style="display:contents" dir="auto"><blockquote id="23a2bf6c-3445-8075-b940-fbe22cbd4b66" class=""><strong>Which of the following is a subject? User</strong></blockquote></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-809e-bc17-d386d139e6b1" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23b2bf6c-3445-8017-a0f6-fddb8973b4ba" class=""><strong>Defense in Depth</strong></h2></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-804f-98b2-f1bf86a7719f" class=""><strong>Access control</strong> includes permissions to buildings, server rooms, networks, applications, and utilities. These are part of a <strong>layered defense strategy</strong>, known as <strong>defense in depth</strong>.</p></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-80c8-92e5-d3243f1e3ed0" class=""><strong>Defense in depth</strong> is a security approach that combines people, technology, and processes to create multiple barriers across the organization. It uses layered countermeasures to reduce risk, though it cannot fully prevent attacks.</p></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-80f5-928f-e15fc232cd1c" class="">Examples include:</p></div><div style="display:contents" dir="auto"><ul id="23b2bf6c-3445-8047-8146-e299d0bc4102" class="bulleted-list"><li style="list-style-type:disc"><strong>Multi-factor authentication</strong> (e.g., password + phone code) using two layers: something you know and something you have.</li></ul></div><div style="display:contents" dir="auto"><ul id="23b2bf6c-3445-80f8-bff4-fa15edc2f363" class="bulleted-list"><li style="list-style-type:disc"><strong>Multiple firewalls</strong> to separate untrusted networks (like the internet) from trusted internal systems holding sensitive data.</li></ul></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-804c-8718-ff2a8be33b4e" class=""><br/>When a company handles information with varying sensitivity levels, it may use <strong>multiple firewalls</strong> to enforce stricter access control. Network traffic is validated by rules at each layer, with the <strong>most sensitive data</strong> protected behind <strong>multiple firewall layers</strong> for added security.<br/><br/></p></div><div style="display:contents" dir="ltr"><figure id="23b2bf6c-3445-80b3-a286-da64fbf71446" class="image"><a href="Domain%203%20Access%20Control%20Concepts/image%201.png"><img style="width:240px" src="Domain%203%20Access%20Control%20Concepts/image%201.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-8078-8eda-ef198a12aeee" class=""><br/>A non-technical example of defense in depth is accessing data in a data center. First, a <strong>physical lock</strong> restricts entry. Second, <strong>technical controls</strong> block network access. Third, <strong>administrative policies</strong> define who is authorized to access the data.<br/><br/></p></div><div style="display:contents" dir="auto"><blockquote id="23b2bf6c-3445-8082-b527-ddb48125dfe5" class=""><strong>What is the strategy that integrates people, technology, and operations capabilities to establish variable barriers across multiple layers and missions of an organization?<br/>Layered Defense</strong></blockquote></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-80f8-aa08-e5c25e1ffaab" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23b2bf6c-3445-80e3-acf2-ef2da34cc414" class=""><strong>Examples of Least Privilege</strong></h2></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-801b-a6b3-fbc997329abd" class=""><strong>Least Privilege</strong> ensures users have access only to the information and resources necessary for their roles. This principle, enforced through <strong>privileged access management</strong>, helps protect confidentiality by limiting unnecessary access.</p></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-805f-aaf1-edd2f143a2c0" class="">For example, only billing staff can view consumer financial data, and even fewer can modify it—supporting <strong>confidentiality, integrity, and availability</strong> through proper authentication and permissions.</p></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-80bc-8ca2-d54776a304fc" class="">Access may also be <strong>limited by time</strong>, such as during business hours, or <strong>by data fields</strong>, like in healthcare where some staff can view patient details but not medical records. Doctors may only access their own patients&#x27; data, as required by privacy laws like <strong>HIPAA in </strong>USA and by specific privacy lays in other countries.</p></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-8036-895d-ce15f99dff71" class="">Systems often <strong>monitor access</strong>, triggering alerts if unauthorized attempts are detected, so security teams can respond accordingly.</p></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-80d8-b68e-e83cc7b6d624" class=""><br/>The more critical the information a person can access, the stronger the security measures should be—such as enforcing <strong>multi-factor authentication</strong> to protect that access.<br/></p></div><div style="display:contents" dir="auto"><blockquote id="23b2bf6c-3445-807f-989c-e6f9382812eb" class=""><strong>How does privileged access management implement the principle of least privilege?<br/>By granting each user access only to the items they need</strong></blockquote></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-808a-ad82-da77f90e6144" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23b2bf6c-3445-80ce-ba9a-c679fc8df02c" class=""><strong>Mandatory Access Control (MAC) in the Workplace</strong></h2></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-8066-b043-f0b991347409" class=""><strong>Mandatory Access Control (MAC)</strong> restricts access based on predefined policies set by the asset owner, not individual judgment.</p></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-80ad-868a-e04a21ff49d7" class="">For example, government agencies require specific security clearances for access, as defined by government policy and not by the individual giving access based on their own judgement. This is often combined with <strong>separation of duties</strong>, limiting users to only the information needed for their role—often enforced through <strong>role-based access control.</strong></p></div><div style="display:contents" dir="auto"><blockquote id="23b2bf6c-3445-8016-a138-c0cffd686247" class=""><strong>In Mandatory Access Control (MAC), what determines the level of access to certain areas in certain government agencies?<br/>Government policy and security clearance</strong></blockquote></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-8084-bc48-df3a215dd70b" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23b2bf6c-3445-80f1-abfb-d2c25e47108e" class=""><strong>Logical Access Controls</strong></h2></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-80e8-80e3-d94a8eab8261" class=""><strong>Physical access controls</strong> restrict entry to areas or assets using tangible methods, while <strong>logical access controls</strong> use electronic methods to restrict access to systems or data.</p></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-801b-97d8-dc4537877834" class="">Examples of logical controls include:</p></div><div style="display:contents" dir="auto"><ul id="23b2bf6c-3445-8068-b4a1-ddf3734fa33c" class="bulleted-list"><li style="list-style-type:disc">Passwords</li></ul></div><div style="display:contents" dir="auto"><ul id="23b2bf6c-3445-80a0-aed7-e4abca2b7586" class="bulleted-list"><li style="list-style-type:disc">Biometrics (e.g., on phones or laptops)</li></ul></div><div style="display:contents" dir="auto"><ul id="23b2bf6c-3445-8049-8494-ec2490dc0a4a" class="bulleted-list"><li style="list-style-type:disc">Badge or token readers connected to systems</li></ul></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-80b7-929b-db32bef2546a" class="">These controls ensure only authorized users can access assets, even if they have physical access.</p></div><div style="display:contents" dir="auto"><blockquote id="23b2bf6c-3445-8011-9ca0-fa49b0b2406b" class=""><strong>Which of the following is an example of a logical access control method?<br/>Biometrics on a smartphone</strong></blockquote></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-802a-8dc4-cc5fae7d6685" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23b2bf6c-3445-80fb-ba17-d2d9a80424bc" class=""><strong>Defense in Depth in Practice</strong></h2></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-80c5-8fd6-c670120b2f5c" class="">A data center uses multiple layers of defense: <strong>administrative controls</strong> (policies and procedures), <strong>logical controls</strong> (access restrictions), and <strong>physical controls</strong> (secure facilities).</p></div><div style="display:contents" dir="auto"><p id="23b2bf6c-3445-801e-81ac-ca0443109bd2" class="">Despite cloud and virtualization advancements, data is still stored and processed on <strong>physical hardware</strong> in <strong>physical locations</strong>, underscoring the importance of physical security.</p></div><div style="display:contents" dir="auto"><blockquote id="23b2bf6c-3445-80d9-bc9c-fd75d4e63132" class=""><strong>Limiting access to data on the network would be considered which of the following controls?<br/>Logical or technical controls</strong></blockquote></div><div style="display:contents" dir="auto"><h2 id="23b2bf6c-3445-80e3-80de-d508e8effaae" class=""><strong>Controls and Risks</strong></h2></div><div style="display:contents" dir="auto"><ol type="1" id="23b2bf6c-3445-8051-b7a9-e80ee93a37f9" class="numbered-list" start="1"><li>A seatbelt is a <strong>physical control</strong>, while a law requiring its use is an <strong>administrative control</strong>. Together, they reduce driving risk to an acceptable level for both the individual and society.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="23b2bf6c-3445-80c0-8d65-f153f2d20c20" class="numbered-list" start="2"><li>A <strong>tall bookshelf</strong> poses a risk of injury if it falls. A <strong>building code</strong> requiring it to be secured is an <strong>administrative control</strong>, while <strong>strapping it to the wall</strong> is a <strong>physical control</strong>. Together, they reduce the risk of harm.</li></ol></div><div style="display:contents" dir="auto"><blockquote id="23b2bf6c-3445-80c5-b58f-eda6f025f86d" class=""><strong>What would be considered an administrative control in the context of seat belt usage?<br/>Passing a law requiring seat belt use</strong></blockquote></div><div style="display:contents" dir="auto"><p id="23e2bf6c-3445-8003-a31e-d79e9bfd7fec" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23e2bf6c-3445-808b-a7b5-ffe9a34848a3" class=""><strong>Controls Assessments</strong></h2></div><div style="display:contents" dir="auto"><p id="23e2bf6c-3445-803e-89f1-c26850e13a0c" class=""><strong>Risk reduction</strong> depends on how effective a control is. It must be relevant to the current situation and adaptable to changing conditions.<br/></p></div><div style="display:contents" dir="auto"><p id="23e2bf6c-3445-803b-8c2d-df73a372fb70" class="">Consider a scenario where part of an office building is being re-purposed for use as a secure storage facility. Due to the previous use of the area, there are 5 doors which must be secured before confidential files can be stored there.</p></div><div style="display:contents" dir="auto"><p id="23e2bf6c-3445-80af-be6c-e73411811dd6" class="">When converting part of an office into a <strong>secure storage area</strong>, all <strong>five existing doors</strong> must be secured before storing confidential files.</p></div><div style="display:contents" dir="auto"><p id="23e2bf6c-3445-804c-bd9c-c15e570f0a85" class="">Options include <strong>biometric scanners</strong>, but a <strong>site assessment</strong> will determine if that level of control is needed for all doors. Some doors could be <strong>permanently sealed</strong> or replaced with walls, depending on the <strong>budget</strong> and <strong>security needs</strong>.</p></div><div style="display:contents" dir="auto"><p id="23e2bf6c-3445-8020-b64a-e8c40c65e7f5" class="">Ultimately, the <strong>cost of controls</strong> should match the <strong>value of the protected data</strong>. If high-level controls like biometric locks aren’t necessary, <strong>simple deadbolts</strong> may be sufficient.</p></div><div style="display:contents" dir="auto"><blockquote id="23e2bf6c-3445-80ce-935a-ceca8b9543eb" class=""><strong>What alternative control could be used if biometric locks on multiple doors are not necessary and access does not need to be audited?<br/>Replacing doors with deadbolt locks</strong></blockquote></div><div style="display:contents" dir="auto"><p id="23e2bf6c-3445-809c-9e6b-f9fc6f161139" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23e2bf6c-3445-8094-a5ff-f4994f015556" class=""><strong>Role-Based Access Control (RBAC)</strong></h2></div><div style="display:contents" dir="auto"><p id="23e2bf6c-3445-8016-9f8f-ebba6785cc61" class=""><strong>Role-Based Access Control</strong> assigns access permissions to roles rather than individual users. When someone takes on a job, they&#x27;re assigned a role with the necessary access. If they leave the role, access is automatically removed. This approach is efficient in environments with <strong>high staff turnover</strong> and <strong>similar access needs across roles</strong>.</p></div><div style="display:contents" dir="auto"><blockquote id="23f2bf6c-3445-800b-97b5-f38e51be3425" class=""><strong>In what type of environment does role-based access control work well?<br/>High-staff turnover and similar access requirements</strong></blockquote></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-8073-bb7f-d08930c61488" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23f2bf6c-3445-8006-8795-c4fb2c503624" class=""><strong>Role-Based Access Control (RBAC) in the Workplace</strong></h2></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-809a-80d9-f46f5b91f17f" class=""><strong>Role-Based Access Control (RBAC)</strong> assigns access based on a user&#x27;s role in the organization. For example, <strong>HR</strong> can access personnel files, <strong>Finance</strong> manages bank accounts, and <strong>managers</strong> can view their teams’ information. New employees receive only the <strong>minimum access</strong> needed for their jobs, while system admins may have full access.</p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-80a0-90c4-ee37c5b9c5fb" class=""><strong>Monitoring role assignments</strong> is essential. If temporary access is given (e.g., a junior staff member acting as manager) and not revoked later, the next person in that role may inherit <strong>inappropriate permissions</strong>—a risk known as <strong>privilege creep or or permissions creep.</strong></p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-8066-9be8-c9ac3061ee7c" class="">To avoid this:</p></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-807f-9a73-f322c3bbd588" class="bulleted-list"><li style="list-style-type:disc">Regularly audit and adjust role permissions.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80a1-9bf5-d7b2c8838094" class="bulleted-list"><li style="list-style-type:disc">Avoid copying existing user profiles when assigning roles.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80b7-873b-e7d891546deb" class="bulleted-list"><li style="list-style-type:disc">Use <strong>standardized roles</strong> to ensure each new user starts with the correct level of access.</li></ul></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-80a4-988d-c1fe1e363d4c" class="">This helps maintain security and ensures employees only have access to what they need.</p></div><div style="display:contents" dir="auto"><blockquote id="23f2bf6c-3445-8059-b55a-fde5eac7eb9a" class=""><strong>What term is used to describe the situation where someone inherits expanded permissions that are not appropriate for their role in Role-based Access Control (RBAC)?<br/>privilege creep</strong></blockquote></div><div style="display:contents" dir="auto"><h2 id="23f2bf6c-3445-808d-92b3-c1b8115d09b1" class=""><strong>Privileged Access Management</strong></h2></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-804a-af3e-de43b29b310a" class=""><strong>Privileged Access Management (PAM)</strong> controls and secures high-level access to critical systems. Instead of granting full administrative rights at all times, PAM uses <strong>just-in-time access</strong>—activating privileges only when needed for specific tasks.</p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-803e-a5d5-c296e7a2e559" class="">Without PAM, admin rights are constantly active, increasing the risk of misuse or exploitation. For example, at ABC Inc., IT staff added their IDs to the <strong>Domain Admins group</strong> for convenience. When one employee opened a malicious email, the ransomware used their admin privileges to <strong>encrypt all systems</strong>.</p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-8041-a6e8-ddcb56834b70" class="">With PAM in place, admin access would be <strong>temporary and task-specific</strong>, preventing the ransomware from spreading. Routine tasks like checking email would be performed with <strong>standard user rights</strong>, significantly reducing risk.</p></div><div style="display:contents" dir="auto"><blockquote id="23f2bf6c-3445-809f-846d-c814c86ecfdd" class=""><strong>What is the key feature of just-in-time privileged access management?<br/>Role-based subsets of privileges</strong></blockquote></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-80be-b7ab-f38c80ed9233" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23f2bf6c-3445-80a4-81d6-d2264f52057a" class=""><strong>Privileged Accounts</strong></h2></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-8030-8966-c663f546ce93" class=""><strong>Privileged Accounts</strong> are user accounts with elevated permissions beyond those of standard users. These are typically granted to trusted personnel who need enhanced access to perform specialized tasks.</p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-80c7-ac4a-e05fc38ccb11" class="">Common users of privileged accounts include:</p></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80dc-8b97-ed36526e6a8e" class="bulleted-list"><li style="list-style-type:disc"><strong>System Administrators</strong> – manage OS, applications, and performance.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80e6-8027-f3b40b8d53b9" class="bulleted-list"><li style="list-style-type:disc"><strong>Help Desk/IT Support</strong> – access endpoints and systems for troubleshooting.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-8033-8ea9-d40809eee335" class="bulleted-list"><li style="list-style-type:disc"><strong>Security Analysts</strong> – need broad access for threat detection and response.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-8036-9c32-db5d46469e10" class="bulleted-list"><li style="list-style-type:disc"><strong>Project/Client-Specific Roles</strong> – granted temporary or project-based control.</li></ul></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-80cb-9d9d-dbd2fb303b08" class="">Such access must be carefully <strong>assigned, monitored, and revoked when no longer needed</strong>, as misuse of privileged accounts can cause serious organizational harm.</p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-80ea-8551-f25520d1bad0" class=""><strong>To moderate risks from misuse or abuse of privileged accounts</strong>, organizations implement stricter controls than for regular user accounts. Key measures include:</p></div><div style="display:contents" dir="auto"><ol type="1" id="23f2bf6c-3445-80e3-8a11-c370d1bdf43a" class="numbered-list" start="1"><li><strong>Detailed Logging</strong>:<div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-805c-978e-d3dbfa1dc8c4" class="bulleted-list"><li style="list-style-type:disc">Every action by privileged users is extensively logged.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80ca-8b03-c785f974f4f4" class="bulleted-list"><li style="list-style-type:disc">Serves as both a <strong>deterrent</strong> and a <strong>detective control</strong> (for audits and investigations).</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="23f2bf6c-3445-8094-82c0-c7cc13fbfd89" class="numbered-list" start="2"><li><strong>Stricter Access Control</strong>:<div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80c0-a627-db98d26109d9" class="bulleted-list"><li style="list-style-type:disc">Privileged users undergo <strong>more rigorous authentication</strong>, such as advanced MFA.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80b4-aaca-cf1d08c61f42" class="bulleted-list"><li style="list-style-type:disc"><strong>Just-in-time access</strong> grants privileges only when needed and revokes them afterward.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="23f2bf6c-3445-8036-ad6b-e8235cb79170" class="numbered-list" start="3"><li><strong>Stronger Trust Verification</strong>:<div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80c1-a31e-fb124a1d27eb" class="bulleted-list"><li style="list-style-type:disc">Privileged users may be required to pass <strong>thorough background checks</strong>, NDAs, and financial vetting.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80a5-bb67-e86319e9d37b" class="bulleted-list"><li style="list-style-type:disc">Checks may be updated periodically or triggered by events.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="23f2bf6c-3445-80fd-9e68-fdbf06f80104" class="numbered-list" start="4"><li><strong>Enhanced Auditing</strong>:<div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80b4-bc46-db64d7d2d84a" class="bulleted-list"><li style="list-style-type:disc">Activity is <strong>more frequently and deeply audited</strong> to catch inappropriate access or risky behavior early.</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-803a-8751-eac5146cd14c" class="">These controls collectively help <strong>prevent, detect, and respond to threats</strong> stemming from misuse of elevated privileges.</p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-8007-a8fc-f49a8634b52b" class=""><strong>Privileged Access Management (PAM) – Help Desk Example :</strong></p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-80f4-8abe-fa2e66720430" class="">Help Desk staff often need to reset passwords or unlock accounts. Instead of giving full &quot;domain admin&quot; access, they can be granted only those specific permissions. All actions should be logged and regularly audited—for example, by matching daily password reset logs with support tickets for password reset—to ensure secure, appropriate use without over-privileging.</p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-8042-b461-c78588c14843" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="23f2bf6c-3445-8072-b189-c32bf813ec98" class="">Monitoring</h2></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-80f0-a4b5-f5e8e954d4e6" class="">The use of physical access controls, monitoring personnel and equipment entering and leaving, and auditing and logging all physical events are primary elements in maintaining overall organizational security.</p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-80cc-a832-f0f036310470" class="">Examples:</p></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80f5-9deb-c9a5b9b2efe0" class="bulleted-list"><li style="list-style-type:disc"><strong>Cameras</strong>: Provide live surveillance and recordings; deter threats and support forensics.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-8048-a4b4-d252ec311ff1" class="bulleted-list"><li style="list-style-type:disc"><strong>Motion Sensors</strong>: Use infrared, microwave, or vibration tech to detect movement or breaches.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80da-aa6d-d4a90787efcc" class="bulleted-list"><li style="list-style-type:disc"><strong>Logs</strong>: Physical/electronic records of entries; essential for audits, legal compliance, and anomaly detection. Logs must be reviewed, retained per policy, and protected from tampering.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80db-8927-fd66fb6dccf0" class="bulleted-list"><li style="list-style-type:disc"><strong>Alarm Systems</strong>: Detect unauthorized access (e.g., forced entry), fire, or emergencies via sensors and alert appropriate personnel.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80b7-bfea-dd5e6898df50" class="bulleted-list"><li style="list-style-type:disc"><strong>Panic Buttons</strong>: Manual emergency alerts for immediate police/security response.</li></ul></div><div style="display:contents" dir="auto"><ul id="23f2bf6c-3445-80ad-8bd7-cadb0a1704fb" class="bulleted-list"><li style="list-style-type:disc"><strong>Security Guards</strong>: Act as a deterrent, verify identity, prevent tailgating, and respond to physical threats.</li></ul></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-8077-8e28-d8ef071b17ae" class="">These combined methods ensure comprehensive monitoring and protection of physical assets and premises.</p></div><div style="display:contents" dir="auto"><p id="23f2bf6c-3445-806c-8ae3-f9ee0232db39" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
